@@ -1,10 +1,11 @@
 {
-  "name": "dialogflow-server",
+  "name": "bot-server",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start":"node server"
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,12 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.1.1",
-    "morgan": "^1.10.0"
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "morgan": "^1.10.0",
+    "node-nlp": "^4.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }

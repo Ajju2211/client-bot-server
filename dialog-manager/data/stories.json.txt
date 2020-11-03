@@ -1,0 +1,21 @@
+{
+    "stories":[
+        {
+            <!-- Just a tag name for understanding -->
+            "tag":"happy path",
+            "intents": [
+                "greet",
+                "bye"
+            ]
+        },
+        {
+            "tag":"query",
+            <!-- order of intents matters -->
+            "intents": [
+                "greet",
+                "query",
+                "bye"
+            ]
+        }
+    ]
+}

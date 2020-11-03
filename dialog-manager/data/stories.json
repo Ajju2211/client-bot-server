@@ -1,0 +1,19 @@
+{
+    "stories":[
+        {
+            "tag":"happy path",
+            "intents": [
+                "greet",
+                "bye"
+            ]
+        },
+        {
+            "tag":"query",
+            "intents": [
+                "greet",
+                "query",
+                "bye"
+            ]
+        }
+    ]
+}

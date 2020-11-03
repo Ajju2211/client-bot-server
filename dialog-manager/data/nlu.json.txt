@@ -1,0 +1,20 @@
+{
+    "nlu": [
+        {
+            "intent": {
+                "name": "greet",
+                "examples": [
+                    {
+                        <!-- lang optional default 'en' -->
+                        "lang": "en",
+                        "example": "hi"
+                    },
+                    {
+                        "lang": "en",
+                        "example": "hello"
+                    }
+                ]
+            }
+        }
+    ]
+}
