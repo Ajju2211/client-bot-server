@@ -1,7 +1,13 @@
 const router = require("express").Router();
 
 const salesApi = require("../sample-api/sales_api");
+const authController = require("../sample-api/auth");
 
+router
+    .post('/user/verifyUser', authController.getUserData);
+// Login API
+router
+    .post('/login', authController.login);
 // SALES API
 // consolidated sales
 router

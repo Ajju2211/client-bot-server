@@ -47,3 +47,6 @@ module.exports.buildResponse = ({text,image,buttons,quickReplies,cards,chartCard
     }
     return [response];
 };
+
+
+

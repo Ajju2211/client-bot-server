@@ -14,13 +14,13 @@ module.exports = {
     buildResponse({
       text: "Thanks for visiting us",
     }),
-  "main.menu.sales": () =>
+  "main.sales": () =>
     buildResponse({
       text: "Select the sales types.",
       buttons: [
         {
           title: "Consolidated Sales",
-          payload: "consolidated sales",
+          payload: "main.sales.consolidated",
         },
         {
           title: "Top Items",
@@ -36,29 +36,29 @@ module.exports = {
         },
       ],
     }),
-  "main.menu.sales.consolidatedsales": () =>
+  "main.sales.consolidated": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
         {
           title: "Today",
-          payload: "today consolidated sales",
+          payload: "main.sales.consolidated.today",
         },
         {
           title: "Yesterday",
-          payload: "yesterday consolidated sales",
+          payload: "main.sales.consolidated.yesterday",
         },
         {
           title: "LastWeek",
-          payload: "last week consolidated sales",
+          payload: "main.sales.consolidated.lastweek",
         },
         {
           title: "LastMonth",
-          payload: "last month consolidated sales",
+          payload: "main.sales.consolidated.lastmonth",
         },
       ],
     }),
-  "main.menu.sales.topitems": () =>
+  "main.sales.topitems": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -80,7 +80,7 @@ module.exports = {
         },
       ],
     }),
-  "main.menu.sales.topcategories": () =>
+  "main.sales.topcategories": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -102,7 +102,7 @@ module.exports = {
         },
       ],
     }),
-  "main.menu.sales.topordertypes": () =>
+  "main.sales.topordertypes": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -124,7 +124,7 @@ module.exports = {
         },
       ],
     }),
-  "main.menu.sales.toppaymentmode": () =>
+  "main.sales.toppaymentmode": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [

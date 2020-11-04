@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const path = require("path");
 
 
 // Routes
@@ -25,6 +26,9 @@ app.use(cookieParser());
 //Body parsser, reading  data from body into req.body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// server statuc file
+app.use('/ui', express.static(path.join(__dirname, 'public')))
 
 // sample-api for testing replaced with original
 app.use('/api/v1', sampleAPIRouter);
