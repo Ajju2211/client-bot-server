@@ -33,7 +33,8 @@ $(document).ready(function() {
     //global variables
     action_name = "action_greet_user";
     user_id = "userid_unique";
-
+    
+    $("#userInput").prop('disabled', true);
 
     //if you want the bot to start the conversation
     // action_trigger();
@@ -190,7 +191,8 @@ function restartConversation() {
     if (typeof modalChart !== 'undefined') { modalChart.destroy(); }
     $(".chats").html("");
     $(".usrInput").val("");
-    send("/restart");
+    // to restart
+    send("/greetings.welcome");
 }
 
 // ========================== let the bot start the conversation ========================
@@ -209,14 +211,14 @@ function action_trigger() {
             if (botResponse.hasOwnProperty("messages")) {
                 setBotResponse(botResponse.messages);
             }
-            $("#userInput").prop('disabled', false);
+            $("#userInput").prop('disabled', true);
         },
         error: function(xhr, textStatus, errorThrown) {
 
             // if there is no response from rasa server
             setBotResponse("");
             console.log("Error from bot end: ", textStatus);
-            $("#userInput").prop('disabled', false);
+            $("#userInput").prop('disabled', true);
         }
     });
 }
@@ -298,9 +300,13 @@ function scrollToBottomOfResults() {
 function send(message) {
 
     $.ajax({
-        url: "https://frendy-rasa-bot-ilsxqqnpkq-uc.a.run.app/webhooks/custom_rest/webhook",
+        url: "/user/bot/webhook",
         type: "POST",
         contentType: "application/json",
+        "headers": {
+            "accept": "application/json",
+            "Access-Control-Allow-Origin":"*"
+        },
         data: JSON.stringify({ message: message, sender: user_id }),
         success: function(botResponse, status) {
             console.log("Response from Rasa: ", botResponse, "\nStatus: ", status);
@@ -578,10 +584,23 @@ $("#clear").click(function() {
 });
 
 //close function to close the widget.
-$("#close").click(function() {
-    $(".profile_div").toggle();
-    $(".widget").toggle();
-    scrollToBottomOfResults();
+$("#logout").click(function() {
+    $.ajax({
+        url: "/user/logout",
+        type: "GET",
+        success: function(response, status) {
+            console.log("Response from server: ", response, "\nStatus: ", status);
+                setBotResponse(response);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            // display error in ui
+            // if there is no response from rasa server
+            console.log("Error from bot end: ", textStatus);
+        }
+    });
+    // $(".profile_div").toggle();
+    // $(".widget").toggle();
+    // scrollToBottomOfResults();
 });
 
 //====================================== Cards Carousel =========================================
@@ -953,7 +972,7 @@ function getUserPosition(position) {
 
     //here you add the intent which you want to trigger 
     response = '/inform{"latitude":' + position.coords.latitude + ',"longitude":' + position.coords.longitude + '}';
-    $("#userInput").prop('disabled', false);
+    $("#userInput").prop('disabled', true);
     send(response);
     showBotTyping();
 }
@@ -979,7 +998,7 @@ function handleLocationAccessError(error) {
     send(response);
     showBotTyping();
     $(".usrInput").val("");
-    $("#userInput").prop('disabled', false);
+    $("#userInput").prop('disabled', true);
 
 
 }
@@ -1190,9 +1209,29 @@ function createChartinModal(title, labels, backgroundColor, chartsData, chartTyp
 
 
 function login(){
-    let name = $("input[name='email']").val();
-    // let password = md5(($("input[name='password']").val()));
+    let email = $("input[name='email']").val();
+    let password = $("input[name='password']").val();
     // console.log(password);
+    $.ajax({
+        url: "/user/login",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ email: email, password: password }),
+        success: function(response, status) {
+            console.log("Response from server: ", response, "\nStatus: ", status);
+            // remove loginform html from chats
+            $(".chats").fadeOut("normal", function() {
+                $(".chats").html("");
+                $(".chats").fadeIn();
+            });
+            send("/greetings.welcome");
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            // display error in ui
+            // if there is no response from rasa server
+            console.log("Error from bot end: ", textStatus);
+        }
+    });    
 
 }
 

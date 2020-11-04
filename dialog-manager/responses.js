@@ -6,7 +6,7 @@ module.exports = {
       buttons: [
         {
           title: "Sales",
-          payload: "sales menu",
+          payload: "/main.sales",
         },
       ],
     }),
@@ -20,7 +20,7 @@ module.exports = {
       buttons: [
         {
           title: "Consolidated Sales",
-          payload: "main.sales.consolidated",
+          payload: "/main.sales.consolidated",
         },
         {
           title: "Top Items",
@@ -42,19 +42,19 @@ module.exports = {
       buttons: [
         {
           title: "Today",
-          payload: "main.sales.consolidated.today",
+          payload: "/main.sales.consolidated.today",
         },
         {
           title: "Yesterday",
-          payload: "main.sales.consolidated.yesterday",
+          payload: "/main.sales.consolidated.yesterday",
         },
         {
           title: "LastWeek",
-          payload: "main.sales.consolidated.lastweek",
+          payload: "/main.sales.consolidated.lastweek",
         },
         {
           title: "LastMonth",
-          payload: "main.sales.consolidated.lastmonth",
+          payload: "/main.sales.consolidated.lastmonth",
         },
       ],
     }),

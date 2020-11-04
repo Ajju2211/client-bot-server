@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const { buildResponse } = require("../utils/make-response");
+const axios = require("axios");
 const db = [
   {
     email: "test@mail.com",
@@ -101,14 +102,22 @@ exports.protect = async (req, res, next) => {
 
     // 2) validate the token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
+    console.log(decoded);
     // 3) get user details
     // const currentUser = db.find((ele) => ele.email == decoded.id);
     const url = "https://client-bot-server.herokuapp.com/api/v1/user/verifyUser";
-    const currentUser = (await axios.post(url,{email_id:decoded.id})).data;
+    const dataRes = await axios.post(url,{email_id:decoded.id},{
+      headers:{
+        "Content-Type": "application/json"
+      }
+    });
+    if(dataRes.status != 200){
+      throw "INTERNAL SERVER ERROR";
+    }
+    const currentUser = dataRes.data.result;
 
     // GRANT ACCESS TO PROTECTED ROUTE
-    req.user = currentUser;
+    res.user = currentUser;
     res.locals.user = currentUser;
     next();
   } catch (err) {

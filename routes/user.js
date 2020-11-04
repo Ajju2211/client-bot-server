@@ -9,7 +9,7 @@ router.post('/login',authMiddleware.login);
 router.get('/logout', authMiddleware.logout);
 
 // protect every route on /user/*
-// router.use(authMiddleware.protect);
+router.use(authMiddleware.protect);
 
 // testing route
 router.get('/',userController.protectedResource);

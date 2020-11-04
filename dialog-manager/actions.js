@@ -38,3 +38,9 @@ module.exports['main.sales.consolidated.lastweek'] = async (userObj) => {
     const data = dtUtil.getLastWeek();
     return await salesActions.consolidated(data, token);
 }
+// topitems
+// module.exports['main.sales.topitems.today'] = async (userObj) => {
+//     const token = md5(userObj.manager_id) + md5(userObj.brand_id);
+//     const data = dtUtil.getToday();
+//     return await salesActions.topitems(data, token);
+// }
