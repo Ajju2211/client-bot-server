@@ -3,5 +3,5 @@ module.exports.protectedResource = async (req, res) => {
 };
 
 module.exports.consolidatedSales = async (req, res) => {
-    
+    const consolidatedsales = [{}];
 };

@@ -103,7 +103,9 @@ exports.protect = async (req, res, next) => {
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
     // 3) get user details
-    const currentUser = db.find((ele) => ele.email == decoded.id);
+    // const currentUser = db.find((ele) => ele.email == decoded.id);
+    const url = "https://client-bot-server.herokuapp.com/api/v1/user/verifyUser";
+    const currentUser = (await axios.post(url,{email_id:decoded.id})).data;
 
     // GRANT ACCESS TO PROTECTED ROUTE
     req.user = currentUser;

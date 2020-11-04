@@ -3,6 +3,7 @@ const router = require("express").Router();
 const salesApi = require("../sample-api/sales_api");
 const authController = require("../sample-api/auth");
 
+// verify user by email_id
 router
     .post('/user/verifyUser', authController.getUserData);
 // Login API
