@@ -7,7 +7,7 @@
 # }
 
 # 
-POST http://localhost:5000/user/bot/webhook HTTP/1.1
+POST https://client-bot-server.herokuapp.com/user/bot/webhook HTTP/1.1
 content-type: application/json
 
 {

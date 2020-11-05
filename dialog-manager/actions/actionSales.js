@@ -1,8 +1,8 @@
 const axios = require("axios");
 const md5 = require("md5");
-const { buildResponse } = require("../utils/make-response");
-const salesActions = require("../dialog-manager/action-helpers/sales");
-const dtUtil = require("../utils/dateUtil");
+const { buildResponse } = require("../../utils/make-response");
+const salesActions = require("../action-helpers/sales");
+const dtUtil = require("../../utils/dateUtil");
 module.exports.restart = () => {
     return buildResponse({
         text:"Welcome to the bot.",
