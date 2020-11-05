@@ -447,6 +447,8 @@ function setBotResponse(response) {
                     //check if the custom payload type is "cardsCarousel"
                     if (response[i].custom.payload == "graphCardsCarousel") {
                         let resData = (response[i].custom.outlets)
+                        // first make global data empty
+                        card_chart_data = [];
                         showGraphCardsCarousel(resData);
                         return;
                     }
@@ -686,15 +688,15 @@ function showSimpleCardsCarousel(cardsToAdd) {
     $(cards).appendTo(".chats").show();
 
 
-    if (cardsToAdd.length <= 2) {
-        $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
-    } else {
+    // if (cardsToAdd.length <= 2) {
+    //     $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
+    // } else {
         for (var i = 0; i < cardsToAdd.length; i++) {
             $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
         }
         $(".cards .arrow.prev").fadeIn("3000");
         $(".cards .arrow.next").fadeIn("3000");
-    }
+    // }
 
 
     scrollToBottomOfResults();
@@ -817,15 +819,15 @@ function showGraphCardsCarousel(cardsToAdd) {
     $(cards).appendTo(".chats").show();
 
 
-    if (cardsToAdd.length <= 2) {
-        $(".graph_cards_scroller>div.graph_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
-    } else {
+    // if (cardsToAdd.length <= 2) {
+    //     $(".graph_cards_scroller>div.graph_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
+    // } else {
         for (var i = 0; i < cardsToAdd.length; i++) {
             $(".graph_cards_scroller>div.graph_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
         }
         $(".cards .arrow.prev").fadeIn("3000");
         $(".cards .arrow.next").fadeIn("3000");
-    }
+    // }
 
 
     scrollToBottomOfResults();
@@ -849,7 +851,7 @@ function showGraphCardsCarousel(cardsToAdd) {
     }
 
     
-    
+console.log(card_chart_data);
  drawCardGraphs();    
 }
 

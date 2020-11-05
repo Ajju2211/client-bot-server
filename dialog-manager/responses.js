@@ -24,15 +24,15 @@ module.exports = {
         },
         {
           title: "Top Items",
-          payload: "top items in sales",
+          payload: "/main.sales.topitems",
         },
         {
           title: "Top categories",
-          payload: "top categories in sales",
+          payload: "/main.sales.topcategories",
         },
         {
           title: "Top OrderTypes",
-          payload: "top order types in sales",
+          payload: "/main.sales.topordertypes",
         },
       ],
     }),
@@ -64,19 +64,19 @@ module.exports = {
       buttons: [
         {
           title: "Today",
-          payload: "today topitems sales",
+          payload: "/main.sales.topitems.today",
         },
         {
           title: "Yesterday",
-          payload: "yesterday topitems sales",
+          payload: "/main.sales.topitems.yesterday",
         },
         {
           title: "LastWeek",
-          payload: "last week topitems sales",
+          payload: "/main.sales.topitems.lastweek",
         },
         {
           title: "LastMonth",
-          payload: "last month topitems sales",
+          payload: "/main.sales.topitems.lastmonth",
         },
       ],
     }),
@@ -86,19 +86,19 @@ module.exports = {
       buttons: [
         {
           title: "Today",
-          payload: "today topcategories sales",
+          payload: "/main.sales.topcategories.today",
         },
         {
           title: "Yesterday",
-          payload: "yesterday topcategories sales",
+          payload: "/main.sales.topcategories.yesterday",
         },
         {
           title: "LastWeek",
-          payload: "last week topcategories sales",
+          payload: "/main.sales.topcategories.lastweek",
         },
         {
           title: "LastMonth",
-          payload: "last month topcategories sales",
+          payload: "/main.sales.topcategories.lastmonth",
         },
       ],
     }),
@@ -108,19 +108,19 @@ module.exports = {
       buttons: [
         {
           title: "Today",
-          payload: "today top ordertypes sales",
+          payload: "/main.sales.topordertypes.today",
         },
         {
           title: "Yesterday",
-          payload: "yesterday top ordertypes sales",
+          payload: "/main.sales.topordertypes.yesterday",
         },
         {
           title: "LastWeek",
-          payload: "last week top ordertypes sales",
+          payload: "/main.sales.topordertypes.lastweek",
         },
         {
           title: "LastMonth",
-          payload: "last month top ordertypes sales",
+          payload: "/main.sales.topordertypes.lastmonth",
         },
       ],
     }),
@@ -130,19 +130,19 @@ module.exports = {
       buttons: [
         {
           title: "Today",
-          payload: "today top paymentmode sales",
+          payload: "/main.sales.toppaymentmode.today",
         },
         {
           title: "Yesterday",
-          payload: "yesterday top paymentmode sales",
+          payload: "/main.sales.toppaymentmode.yesterday",
         },
         {
           title: "LastWeek",
-          payload: "last week top paymentmode sales",
+          payload: "/main.sales.toppaymentmode.lastweek",
         },
         {
           title: "LastMonth",
-          payload: "last month top paymentmode sales",
+          payload: "/main.sales.toppaymentmode.lastmonth",
         },
       ],
     }),

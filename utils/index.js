@@ -38,16 +38,26 @@ keysMap = {
 */
 
 module.exports.generateBackgroundColors = (numOfColors) => {
-  // const COLORS = [
-  //   "#003f5c,
-  // "#2f4b7c",
-  // "#665191",
-  // "#a5d6a7",
-  // "#a05195",
-  // "#d45087",
-  // "#f95d6a",
-  // "#ff7c43",
-  // "#81d4fa",
-  // "#ffa600",
-  // ];
+  const COLORS = [
+  "#003f5c",
+  "#2f4b7c",
+  "#665191",
+  "#a5d6a7",
+  "#a05195",
+  "#d45087",
+  "#f95d6a",
+  "#ff7c43",
+  "#81d4fa",
+  "#ffa600",
+  ];
+  let result = [];
+  let i=0;
+  while(result.length!= numOfColors){
+    if(i>COLORS.length-1){
+      i =0;
+    }
+    result.push(COLORS[i]);
+    i++;
+  }
+  return result;
 };
