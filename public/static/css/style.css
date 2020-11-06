@@ -1073,9 +1073,16 @@ ul.collapsible>li:last-child .collapsible-body {
 }
 
 input:focus {
-    outline: none;
+border-bottom: none!important;
+box-shadow: none!important;
+background-color: none;
 }
 
+input {
+border-bottom: none!important;
+box-shadow: none!important;
+background-color: none;
+}
 video:focus {
     outline: none;
 }
@@ -1164,7 +1171,7 @@ form control login
 .pdf_link a {
     color: #5a17ee;
 }
-@media(min-width:950px){
+@media(min-width:941px){
     .widget{
         height: 500px;
         width: 350px;
@@ -1176,7 +1183,13 @@ form control login
     }
     .mainform {
         top:12%;
-        margin-left: 14%;
+        margin-left: 8%;
+    }
+}
+@media(min-width: 993px){
+    .mainform{
+        top: 12%;
+        margin-left:14%;
     }
 }
 @media(max-width: 940px){
