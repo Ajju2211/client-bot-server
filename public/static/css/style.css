@@ -34,7 +34,7 @@ body {
 
 .chats {
     /* display: none; */
-    height: 385px;
+    height: 440px;
     width: 100%;
     padding: 2px;
     border-radius: 1px;
@@ -380,7 +380,7 @@ div.content_data::-webkit-scrollbar {
     padding-right: 10px;
 }
 .singleCardBtn {
-    margin-top: 84px;
+    /*margin-top: 84px;*/
 }
 
 
@@ -630,7 +630,7 @@ graphCardCarousel
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
-    height: 255px;
+    height: 290px;
     width: 100%;
     transition: width 0.5s ease;
     
@@ -1190,7 +1190,7 @@ form control login
     
     .chats{
         height: auto;
-        max-height: 85%;
+        max-height: 90%;
     }
     
 }
@@ -1271,6 +1271,16 @@ form control login
         display: grid;
         grid-template-columns: 100%;
     }
+}
+@media(min-width: 750px){
+    .graph_cards_scroller {
+        height: 259px;
+    }
+}
+@media (min-width: 950px){
+.graph_cards_scroller {
+    height: 290px;
+}
 }
 /* media queries
 */

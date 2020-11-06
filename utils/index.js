@@ -39,16 +39,16 @@ keysMap = {
 
 module.exports.generateBackgroundColors = (numOfColors) => {
   const COLORS = [
-  "#003f5c",
-  "#2f4b7c",
-  "#665191",
-  "#a5d6a7",
-  "#a05195",
-  "#d45087",
-  "#f95d6a",
-  "#ff7c43",
-  "#81d4fa",
-  "#ffa600",
+  "#f44336",
+  "#2196f3",
+  "#e91e63",
+  "#ffeb3b",
+  "#fb8c00",
+  "#64dd17",
+  "#757575",
+  "#18ffff",
+  "#9e9d24",
+  "#ab47bc ",
   ];
   let result = [];
   let i=0;
