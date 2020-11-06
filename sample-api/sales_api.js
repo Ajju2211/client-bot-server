@@ -128,6 +128,36 @@ const db = [
               total_qty: 20,
               total_amt: 20903.09,
             },
+            {
+              itemname: "Dinein1",
+              total_qty: 20,
+              total_amt: 20903.09,
+            },
+            {
+              itemname: "Take Away1",
+              total_qty: 20,
+              total_amt: 20903.09,
+            },
+            {
+              itemname: "Dinein2",
+              total_qty: 20,
+              total_amt: 20903.09,
+            },
+            {
+              itemname: "Take Away2",
+              total_qty: 20,
+              total_amt: 20903.09,
+            },
+            {
+              itemname: "Dinein3",
+              total_qty: 20,
+              total_amt: 20903.09,
+            },
+            {
+              itemname: "Take Awaysddsdssdsdsddsd",
+              total_qty: 20,
+              total_amt: 20903.09,
+            },
           ],
         },
         {
