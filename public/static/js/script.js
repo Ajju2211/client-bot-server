@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var elemsTap = document.querySelector('.tap-target');
     var instancesTap = M.TapTarget.init(elemsTap, {});
     instancesTap.open();
-    setTimeout(function() { instancesTap.close(); }, 4000);
+    // setTimeout(function() { instancesTap.close(); }, 4000);
 
 });
 
@@ -153,7 +153,13 @@ setUserResponse("hi");
                 "payload":"graphCardsCarousel",
                 "outlets":[
                 {
-         "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+         "metadata":{
+            "val1":"aaa",
+            "val2":"bbbb",
+            "val3":"ccc",
+            "val4":'ddd'
+
+         },"title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
                 },
                 {
          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
@@ -170,12 +176,12 @@ setUserResponse("hi");
         }
 
         ]);
-    setBotResponse([
-        {
-            "custom":{
-                "payload":"loginform"
-            }
-        }]);
+    // setBotResponse([
+    //     {
+    //         "custom":{
+    //             "payload":"loginform"
+    //         }
+    //     }]);
 
 })
 
@@ -888,11 +894,24 @@ function createGraphCardsCarousel(cardsData) {
     for (i = 0; i < cardsData.length; i++) {
         let title = cardsData[i].title;
         let chartContainer = makeChartCanvas(cardsData[i]);
-        item = `<div class="graph_carousel_cards in-left">
-                <div class="graphCardHeader"><span class="cardTitle" title="${title}">${title}</span>
-                </div>
-                ${chartContainer}
-                </div>`;
+        let metadata = cardsData[i].metadata;
+        if(metadata){
+            item = `<div class="graph_carousel_cards in-left">
+        <div class="graphCardHeader"><span class="cardTitle" title="${title}">${title}</span>
+        <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
+                <i class="fa fa-external-link"  aria-hidden="true"></i></span>
+
+        </div>
+        ${chartContainer}
+        </div>`;
+        }
+        else{
+            item = `<div class="graph_carousel_cards in-left">
+        <div class="graphCardHeader"><span class="cardTitle" title="${title}">${title}</span>
+        </div>
+        ${chartContainer}
+        </div>`;
+        }
         cards += item;
     }
 
@@ -1139,11 +1158,15 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 
 // on click of expand button, get the chart data from gloabl variable & render it to modal
 
-$(document).on("click", ".modal-trigger", function() {
+$(document).on("click", ".modal-trigger-card", function() {
     //the parameters are declared gloabally while we get the charts data from rasa.
     // let data = getChartData(i);
     let payload = JSON.parse(this.getAttribute('data-payload'));
-    createChartinModal(payload.title, payload.labels, payload.backgroundColor, payload.chartsData,payload.chartType, payload.displayLegend)
+    const html = `
+    <span>${payload}</span>
+    `;
+    $('#modal2').html(html);
+    $('#modal2').show();
 });    
 
 
