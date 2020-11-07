@@ -1,9 +1,14 @@
 //Bot pop-up intro
 document.addEventListener('DOMContentLoaded', function() {
+    // var options = {dismissible:true};
+    // var Modalelems = document.querySelectorAll('.modal');
+    // var modalinstances = M.Modal.init(Modalelems, options);
+    // modalinstances.open();
+
     var elemsTap = document.querySelector('.tap-target');
     var instancesTap = M.TapTarget.init(elemsTap, {});
     instancesTap.open();
-    // setTimeout(function() { instancesTap.close(); }, 4000);
+    setTimeout(function() { instancesTap.close(); }, 4000);
 
 });
 
@@ -1159,14 +1164,19 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 // on click of expand button, get the chart data from gloabl variable & render it to modal
 
 $(document).on("click", ".modal-trigger-card", function() {
-    //the parameters are declared gloabally while we get the charts data from rasa.
-    // let data = getChartData(i);
     let payload = JSON.parse(this.getAttribute('data-payload'));
     const html = `
-    <span>${payload}</span>
+    <h1>OUTLET</h1>
+    <div>val1: asasas</div>
+    <div>val2: kjkjkjk</div>
+    <div>val3: aaas</div>
+    <div>val4: asas</div>
     `;
+
     $('#modal2').html(html);
-    $('#modal2').show();
+    $('#modal2').modal({dismissible:true});
+    $('#modal2').modal('open');
+    
 });    
 
 
