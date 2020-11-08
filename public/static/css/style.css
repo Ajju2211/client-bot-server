@@ -1327,6 +1327,11 @@ form control login
     height: 290px;
 }
 }
+@media(min-width: 550px){
+    .cardpreviewdata{
+        grid-template-columns: 30% 70%;
+    }
+}
 /* media queries
 */
 @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
