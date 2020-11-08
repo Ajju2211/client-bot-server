@@ -2,6 +2,8 @@ const router = require("express").Router();
 
 const salesApi = require("../sample-api/sales_api");
 const reconc = require("../sample-api/reconciliation_api");
+const payroll = require("../sample-api/payroll_api");
+const inventory = require("../sample-api/inventory_api");
 const authController = require("../sample-api/auth");
 
 // verify user by email_id
@@ -46,5 +48,50 @@ router
 // expencetab
 router
     .post('/reconciliation/expensetab', reconc.expensetab);
-    
+
+// payroll API
+// absentees API
+router
+    .post('/payroll/absentees',payroll.absentees);
+// avg_working_hours API
+router
+    .post('/payroll/avg-working-hours',payroll.avg_working_hrs);
+// avg_daily_costing API
+router
+    .post('/payroll/avg-daily-costing',payroll.avg_daily_costing);
+// pavg-monthly-costing API
+router
+    .post('/payroll/avg-monthly-costing',payroll.avg_monthly_costing);
+
+// inventory API
+// pending_purchases
+router
+    .post('/inventory/pending-purchases',inventory.pending_purchases);
+// pending_indents
+router
+    .post('/inventory/pending-indents',inventory.pending_indents);
+// pending_productions
+router
+    .post('/inventory/pending-productions',inventory.pending_productions);
+// pending_vendor_payments
+router
+    .post('/inventory/pending-vendor-payments',inventory.pending_vendor_payments);
+// pending_physical_checks
+router
+    .post('/inventory/pending-physical-checks',inventory.pending_physical_checks);
+// high_low_margins
+router
+    .post('/inventory/high-low-margins',inventory.high_low_margins);
+// loss making items
+router
+    .post('/inventory/loss-making-items',inventory.loss_making_items);
+// food cost
+router
+    .post('/inventory/food-cost',inventory.food_cost);
+// wastages
+router
+    .post('/inventory/wastages',inventory.wastages);
+// cost-of-goods
+router
+    .post('/inventory/cost-of-goods',inventory.cost_of_goods);
 module.exports = router;

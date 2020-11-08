@@ -179,7 +179,7 @@ const db = [
     },
   },
 ];
-module.exports.login = async (req, res) => {};
+
 
 // sales API
 exports.consolidatedSales = async (req, res) => {

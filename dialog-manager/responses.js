@@ -146,4 +146,80 @@ module.exports = {
         },
       ],
     }),
+    "main.payroll": () =>
+    buildResponse({
+      text: "Select the Payroll type.",
+      buttons: [
+        {
+          title: "Absentees",
+          payload: "/main.payroll.absentees",
+        },
+        {
+          title: "Average Costing",
+          payload: "/main.payroll.avg_costing",
+        },
+        {
+          title: "Average Working hours",
+          payload: "/main.payroll.avg_working_hrs",
+        },
+      ],
+    }),
+    "main.payroll.absentees": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.payroll.absentees.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.payroll.absentees.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.payroll.absentees.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.payroll.absentees.lastmonth",
+        },
+      ],
+    }),
+    "main.payroll.avg_working_hrs": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.payroll.avg_working_hrs.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.payroll.avg_working_hrs.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.payroll.avg_working_hrs.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.payroll.avg_working_hrs.lastmonth",
+        },
+      ],
+    }),
+    "main.payroll.avg_costing": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Daily",
+          payload: "/main.payroll.avg_costing.today",
+        },
+        {
+          title: "Monthly",
+          payload: "/main.payroll.avg_costing.lastmonth",
+        },
+      ],
+    }),
 };
