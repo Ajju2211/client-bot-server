@@ -1239,7 +1239,6 @@ $(document).on("click", ".modal-trigger-table", function() {
             tooltips:true,
             addRowPos:"top",
             history:true,
-            maxHeight:"100%",
             pagination:"local",
             paginationSize:5,
             // paginationSizeSelector:[1,2,3],

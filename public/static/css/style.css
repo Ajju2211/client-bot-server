@@ -955,10 +955,25 @@ For Simple Cards
     height: 60%;
     background-color: rgb(214, 212, 206);
 }
-.modal-table {
-    height: 80%;
+.modaltable{
+    height: 60%;
     border-radius: 10px;
+    margin-top:25%;
 }
+@media(min-width: 550px){
+    .modaltable{
+        height: 40%
+    }
+}
+@media(min-width: 950px){
+    .modaltable{
+        height: 50%;
+    }
+    .modaltable{
+        margin-top:12%;
+    }
+}
+
 
 .cardpreviewHeader{
     width:100%;
