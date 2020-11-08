@@ -29,12 +29,11 @@
         <div id="modal1" class="modal">
             <canvas id="modal-chart"></canvas>
         </div>
-        <!-- Modal for the meta data in card -->
-        <div id="modal2" style="z-index: 1003;opacity: 1;top: 10%;transform: scaleX(1) scaleY(1);" class="modal">
+        <!-- Modal for the metadata table -->
+        <div id="modal2" style="z-index: 1003;opacity: 1;top: 10%;transform: scaleX(1) scaleY(1)" class="modal meta-modal">
         </div>
         <!-- modal for the tabular data -->
-        <div id="modal3" style="z-index: 1003;opacity: 1;top: 10%;transform: scaleX(1) scaleY(1);" class="modal">
-        <div id="modal-table"></div>
+        <div id="modal3" style="height:75%;z-index: 1003;opacity: 1;top: 10%;transform: scaleX(1) scaleY(1);" class="modal">
         </div>
         <!--chatbot widget -->
         <div class="widget">
@@ -96,11 +95,13 @@
 
     <!--Chart.js Script -->
     <script type="text/javascript" src="static/js/chart.min.js"></script>
-    <!-- tabulator.info Script -->
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.0.4/dist/js/tabulator.min.js"></script>
+    <!-- tabulator js Script -->
+    <script type="text/javascript" src="static/js/tabulator.min.js"></script>
     <!-- MD5 Script -->
    <script type="text/javascript" src="static/js/md5.min.js"></script>
-
+   <!-- moment.js script -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.8.4/css/materialize/tabulator_materialize.min.css" integrity="sha512-n1/BCJshXS8N7PrM5SsGkBw7QgCDXWDIIkglJXA9eTU5ejkYE9m4/GylUjloLL1Q3InOvXTk6uNzB0s2aig9Yw==" crossorigin="anonymous" />
 </body>
 
 </html>
