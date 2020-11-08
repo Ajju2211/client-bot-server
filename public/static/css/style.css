@@ -335,7 +335,14 @@ textarea-webkit-scrollbar {
     margin-right: 4px;
     font-size: 1.5em;
 }
-
+.fa-eye{
+    position:relative;
+    float:right;
+    margin-top: 4px;
+    margin-right: 4px;
+    font-size: 1.8em;
+    color: black;   
+}
 .stars-outer {
     display: inline-block;
     position: relative;
@@ -944,7 +951,21 @@ For Simple Cards
     height: 60%;
     border-radius: 10px;
 }
-
+.cardpreviewHeader{
+    width:100%;
+    height:20%;
+    background-color:rgb(44, 83, 175);
+}
+.cardpreviewTitle{
+    font-size:2rem;
+    margin-left:5%;
+    line-height:3;
+    color:white;
+}
+.cardpreviewdata{
+    font-size:1.5rem;
+    margin:2% auto 2% 5%;
+}
 .chart-container {
     position: relative;
     margin-left: 40px;

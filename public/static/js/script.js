@@ -904,7 +904,7 @@ function createGraphCardsCarousel(cardsData) {
             item = `<div class="graph_carousel_cards in-left">
         <div class="graphCardHeader"><span class="cardTitle" title="${title}">${title}</span>
         <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
-                <i class="fa fa-external-link"  aria-hidden="true"></i></span>
+                <i class="fa fa-eye"  aria-hidden="true"></i></span>
 
         </div>
         ${chartContainer}
@@ -1166,11 +1166,11 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 $(document).on("click", ".modal-trigger-card", function() {
     let payload = JSON.parse(this.getAttribute('data-payload'));
     const html = `
-    <h1>OUTLET</h1>
-    <div>val1: asasas</div>
-    <div>val2: kjkjkjk</div>
-    <div>val3: aaas</div>
-    <div>val4: asas</div>
+    <div class="cardpreviewHeader"><span class="cardpreviewTitle">Nandha Outlet</span></div>
+    <div class="cardpreviewdata">val1: asasas</div>
+    <div class="cardpreviewdata">val2: kjkjkjk</div>
+    <div class="cardpreviewdata">val3: aaas</div>
+    <div class="cardpreviewdata">val4: asas</div>
     `;
 
     $('#modal2').html(html);
