@@ -951,6 +951,9 @@ For Simple Cards
     height: 60%;
     border-radius: 10px;
 }
+.meta-modal{
+    height: 50%;
+}
 .cardpreviewHeader{
     width:100%;
     height:20%;
@@ -964,7 +967,14 @@ For Simple Cards
 }
 .cardpreviewdata{
     font-size:1.5rem;
-    margin:2% auto 2% 5%;
+    margin:2% 3% 2% 3%;
+    display:grid;
+    grid-template-columns:50% 50%;
+}
+.cardpreviewvariables{
+    font-weight:700;
+    font-family:Georgia;
+    word-wrap: break-word;
 }
 .chart-container {
     position: relative;

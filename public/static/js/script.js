@@ -1167,10 +1167,10 @@ $(document).on("click", ".modal-trigger-card", function() {
     let payload = JSON.parse(this.getAttribute('data-payload'));
     const html = `
     <div class="cardpreviewHeader"><span class="cardpreviewTitle">Nandha Outlet</span></div>
-    <div class="cardpreviewdata">val1: asasas</div>
-    <div class="cardpreviewdata">val2: kjkjkjk</div>
-    <div class="cardpreviewdata">val3: aaas</div>
-    <div class="cardpreviewdata">val4: asas</div>
+    <span class="cardpreviewdata"><div>Required_Date</div><div class="cardpreviewvariables">asasas</div></span>
+    <span class="cardpreviewdata"><div>val2</div> <div class="cardpreviewvariables">kjkjkjk</div></span>
+    <div class="cardpreviewdata"><div>val3</div><div class="cardpreviewvariables">aaascvhchzckcasckschcdycdcydvcyvchdcvydv</div></div>
+    <span class="cardpreviewdata"><div>val4</div><div class="cardpreviewvariables">asas</div></span>
     `;
 
     $('#modal2').html(html);
