@@ -961,7 +961,7 @@ For Simple Cards
     background-color:rgb(44, 83, 175);
 }
 .cardpreviewTitle{
-    font-size:2rem;
+    font-size:1.7rem;
     margin-left:5%;
     line-height:3;
     color:white;
@@ -973,7 +973,7 @@ For Simple Cards
     grid-template-columns:60% 40%;
 }
 .cardpreviewvariables{
-    font-weight:700;
+    font-weight:600;
     font-family:Georgia;
     word-wrap: break-word;
 }
