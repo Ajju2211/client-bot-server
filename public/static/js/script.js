@@ -1166,7 +1166,7 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 $(document).on("click", ".modal-trigger-card", function() {
     let payload = JSON.parse(this.getAttribute('data-payload'));
     const html = `
-    <div class="cardpreviewHeader"><span class="cardpreviewTitle">Nandha Outlet</span></div>
+    <div class="cardpreviewHeader" ><span class="cardpreviewTitle">Nandha Outlet</span></div>
     <span class="cardpreviewdata"><div>Required_Date</div><div class="cardpreviewvariables">asasas</div></span>
     <span class="cardpreviewdata"><div>val2</div> <div class="cardpreviewvariables">kjkjkjk</div></span>
     <span class="cardpreviewdata"><div>val3</div><div class="cardpreviewvariables">aaascvhchzckcasckschcdycdcydvcyvchdcvydv</div></span>
