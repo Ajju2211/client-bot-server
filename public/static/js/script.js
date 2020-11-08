@@ -741,15 +741,32 @@ function createSimpleCardsCarousel(cardsData) {
         let title = cardsData[i].name;
         let counts = cardsData[i].counts;
         let totalAmount = cardsData[i].totalAmount;
-        item = `<div class="simple_carousel_cards in-left">
-                <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
-                </div>
-                <p>
-                <div><i class="fas fa-money-bill-wave"></i></div>
-                <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
-                <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
-                </p>
-                </div>`;
+        let table = cardsData[i].table;
+        if(table){
+            item = `<div class="simple_carousel_cards in-left">
+            <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
+            </div>
+            <span class="modal-trigger-table" data-payload = '${JSON.stringify(table)}' id="modaltableexp" title="Table" href="#modal3">
+            <i class="fa fa-external-link"  aria-hidden="true"></i></span>
+            <p>
+            <div><i class="fas fa-money-bill-wave"></i></div>
+            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
+            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            </p>
+            </div>`;
+        }
+        else{
+            item = `<div class="simple_carousel_cards in-left">
+            <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
+            </div>
+            <p>
+            <div><i class="fas fa-money-bill-wave"></i></div>
+            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
+            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            </p>
+            </div>`;
+        }
+
         cards += item;
     }
 
@@ -1177,9 +1194,24 @@ $(document).on("click", ".modal-trigger-card", function() {
     $('#modal2').modal({dismissible:true});
     $('#modal2').modal('open');
     
-});    
+});
 
+// on click of expand button, render the table
+$(document).on("click", ".modal-trigger-table", function() {
+    let payload = JSON.parse(this.getAttribute('data-payload'));
+    const html = `
+    <h1>Table</h1>
+    <div>val1: asasas</div>
+    <div>val2: kjkjkjk</div>
+    <div>val3: aaas</div>
+    <div>val4: asas</div>
+    `;
 
+    $('#modal2').html(html);
+    $('#modal2').modal({dismissible:true});
+    $('#modal2').modal('open');
+    
+});
 
 
 // on click of expand button, get the chart data from gloabl variable & render it to modal
