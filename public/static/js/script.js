@@ -1169,7 +1169,7 @@ $(document).on("click", ".modal-trigger-card", function() {
     <div class="cardpreviewHeader"><span class="cardpreviewTitle">Nandha Outlet</span></div>
     <span class="cardpreviewdata"><div>Required_Date</div><div class="cardpreviewvariables">asasas</div></span>
     <span class="cardpreviewdata"><div>val2</div> <div class="cardpreviewvariables">kjkjkjk</div></span>
-    <div class="cardpreviewdata"><div>val3</div><div class="cardpreviewvariables">aaascvhchzckcasckschcdycdcydvcyvchdcvydv</div></div>
+    <span class="cardpreviewdata"><div>val3</div><div class="cardpreviewvariables">aaascvhchzckcasckschcdycdcydvcyvchdcvydv</div></span>
     <span class="cardpreviewdata"><div>val4</div><div class="cardpreviewvariables">asas</div></span>
     `;
 

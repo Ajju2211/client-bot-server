@@ -952,7 +952,8 @@ For Simple Cards
     border-radius: 10px;
 }
 .meta-modal{
-    height: 50%;
+    height: 60%;
+    background-color: rgb(214, 212, 206);
 }
 .cardpreviewHeader{
     width:100%;
@@ -967,9 +968,9 @@ For Simple Cards
 }
 .cardpreviewdata{
     font-size:1.5rem;
-    margin:2% 3% 2% 3%;
+    margin:2% 3% 3% 3%;
     display:grid;
-    grid-template-columns:50% 50%;
+    grid-template-columns:60% 40%;
 }
 .cardpreviewvariables{
     font-weight:700;
