@@ -1263,7 +1263,10 @@ $(document).on("click", ".modal-trigger-table", function() {
     // $('#modal2').html(html);
     $('#modal3').modal({dismissible:true});
     $('#modal3').modal('open');
-    
+    let tableheadercss= {backgroundColor:"rgb(44, 83, 175)"};
+  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content').css(tableheadercss);
+  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content').css("{backgroundColor,rgb(44, 83, 175)}");
+  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content').show();    
 });
 
 
