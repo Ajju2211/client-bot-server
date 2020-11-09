@@ -127,7 +127,61 @@ setUserResponse("hi");
             "custom":{
                 "payload":"simpleCardsCarousel",
                 "data":[{
-                "table":{},
+                "table":{
+                    "tableData":[{
+                        id:1,
+                        name:"Shampoo",
+                        price:80,
+                        qty:1
+                    },
+                    {
+                        id:2,
+                        name:"Meera",
+                        price:30.454,
+                        qty:2
+                    },
+                    {
+                        id:3,
+                        name:"Veera",
+                        price:30.45,
+                        qty:0
+                    },
+                    {
+                        id:4,
+                        name:"Coora",
+                        price:30.45,
+                        qty:10
+                    },
+                    {
+                        id:5,
+                        name:"Clinic",
+                        price:30.45,
+                        qty:5
+                    },
+                    {
+                        id:6,
+                        name:"Pantene",
+                        price:25.65,
+                        qty:3
+                    }],
+                    "columns":[{
+                        title:"Name",
+                        field:"name"
+                    },{
+                        title:"Price",
+                        field:"price",
+                        sorter:"number"
+                    },
+                    {
+                        title:"Quantity",
+                        field:"qty",
+                        sorter:"number"
+                    }],
+                    "initialSort":[{column:"name", dir:"asc"}]
+                },
+                "metadata":{
+                    id:12
+                },
                 "name":"Shampoo",
                 "totalAmount": 2000.50,
                 "counts": 20
@@ -743,13 +797,43 @@ function createSimpleCardsCarousel(cardsData) {
         let counts = cardsData[i].counts;
         let totalAmount = cardsData[i].totalAmount;
         let table = cardsData[i].table;
-        if(table){
+        let metadata = cardsData[i].metadata;
+        let item;
+        if(table && metadata)
+        {
+            item = `<div class="simple_carousel_cards in-left">
+            <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
+            <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
+            <i class="fa fa-eye"  aria-hidden="true"></i></span>
+            </div>
+            <p>
+            <span class="modal-trigger-table" data-payload = '${JSON.stringify(table)}' id="modaltableexp" title="Table" href="#modal3">
+            <i class="fa fa-external-link" style="margin-top:40px;" aria-hidden="true"></i></span>
+            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
+            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            </p>
+            </div>`;
+            
+        }
+        else if(table){
             item = `<div class="simple_carousel_cards in-left">
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
             </div>
             <p>
             <span class="modal-trigger-table" data-payload = '${JSON.stringify(table)}' id="modaltableexp" title="Table" href="#modal3">
             <i class="fa fa-external-link" style="margin-top:40px;" aria-hidden="true"></i></span>
+            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
+            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            </p>
+            </div>`;
+        }
+        else if(metadata){
+            item = `<div class="simple_carousel_cards in-left">
+            <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
+            <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
+            <i class="fa fa-eye"  aria-hidden="true"></i></span>
+            </div>
+            <p>
             <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
             <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
             </p>
@@ -1208,32 +1292,13 @@ $(document).on("click", ".modal-trigger-table", function() {
     // <div>val3: aaas</div>
     // <div>val4: asas</div>
     // `;
-    var tabledata = [
-        {id:1, name:"Oli Bob", progress:12, gender:"male", rating:1, col:"red", dob:"19/02/1984", car:1, lucky_no:5},
-        {id:2, name:"Mary May", progress:1, gender:"female", rating:2, col:"blue", dob:"14/05/1982", car:true, lucky_no:10},
-        {id:3, name:"Christine Lobowski", progress:42, gender:"female", rating:0, col:"green", dob:"22/05/1982", car:"true", lucky_no:12},
-        {id:4, name:"Brendon Philips", progress:100, gender:"male", rating:1, col:"orange", dob:"01/08/1980", lucky_no:18},
-        {id:5, name:"Margret Marmajuke", progress:16, gender:"female", rating:5, col:"yellow", dob:"31/01/1999", lucky_no:33},
-        {id:6, name:"Frank Harbours", progress:38, gender:"male", rating:4, col:"red", dob:"12/05/1966", car:1, lucky_no:2},
-        {id:7, name:"Jamie Newhart", progress:23, gender:"male", rating:3, col:"green", dob:"14/05/1985", car:true, lucky_no:63},
-        {id:8, name:"Gemma Jane", progress:60, gender:"female", rating:0, col:"red", dob:"22/05/1982", car:"true", lucky_no:72},
-        {id:9, name:"Emily Sykes", progress:42, gender:"female", rating:1, col:"maroon", dob:"11/11/1970", lucky_no:44},
-        {id:10, name:"James Newman", progress:73, gender:"male", rating:5, col:"red", dob:"22/03/1998", lucky_no:9},
-        {id:11, name:"Martin Barryman", progress:20, gender:"male", rating:5, col:"violet", dob:"04/04/2001"},
-        {id:12, name:"Jenny Green", progress:56, gender:"female", rating:4, col:"indigo", dob:"12/11/1998", car:true},
-        {id:13, name:"Alan Francis", progress:90, gender:"male", rating:3, col:"blue", dob:"07/08/1972", car:true},
-        {id:14, name:"John Phillips", progress:80, gender:"male", rating:1, col:"green", dob:"24/09/1950", car:true},
-        {id:15, name:"Ed White", progress:70, gender:"male", rating:0, col:"yellow", dob:"19/06/1976"},
-        {id:16, name:"Paul Branderson", progress:60, gender:"male", rating:5, col:"orange", dob:"01/01/1982"},
-        {id:18, name:"Emma Netwon", progress:40, gender:"female", rating:4, col:"brown", dob:"07/10/1963", car:true},
-        {id:19, name:"Hannah Farnsworth", progress:30, gender:"female", rating:1, col:"pink", dob:"11/02/1991"},
-        {id:20, name:"Victoria Bath", progress:20, gender:"female", rating:2, col:"purple", dob:"22/03/1986"},
-        ];
         
         //Define Table
         // layout:fitColumns
-        var table = new Tabulator("#modal3", {
-
+        let columns = payload.columns;
+        let initialSort = payload.initialSort;
+        let tabledata = payload.tableData;
+        const table = new Tabulator("#modal3", {
             layout:"fitDataStretch",
             // responsiveLayout:true,
             tooltips:true,
@@ -1245,18 +1310,8 @@ $(document).on("click", ".modal-trigger-table", function() {
             movableColumns:true,
             resizableRows:true,
             data:tabledata,
-            initialSort:[
-                {column:"name", dir:"asc"},
-            ],
-            columns:[
-                {title:"Name", field:"name", editor:"input"},
-                {title:"Task Progress", field:"progress", align:"left", formatter:"progress", editor:true},
-                {title:"Gender", field:"gender", width:90, editor:"select", editorParams:{"Male":"male", "Female":"female"}},
-                {title:"Rating", field:"rating", formatter:"star", align:"center", width:100, editor:true},
-                {title:"Color", field:"col", width:130, editor:"input"},
-                {title:"Date Of Birth", field:"dob", width:130, sorter:"date", align:"center"},
-                {title:"Car", field:"car", width:80,  align:"center", formatter:"tickCross", sorter:"boolean", editor:true},
-            ],
+            initialSort:initialSort,
+            columns:columns
         });
 
 
@@ -1264,9 +1319,10 @@ $(document).on("click", ".modal-trigger-table", function() {
     $('#modal3').modal({dismissible:true});
     $('#modal3').modal('open');
     let tableheadercss= {backgroundColor:"rgb(44, 83, 175)"};
-  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content').css(tableheadercss);
-  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content').css("{backgroundColor,rgb(44, 83, 175)}");
-  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content').show();    
+  $('.tabulator .tabulator-header .tabulator-headers .tabulator-col .tabulator-col-content').css(tableheadercss);
+  $('.tabulator-headers').css(tableheadercss);
+  $('.tabulator-col-title').css('color','white');
+  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title').show();    
 });
 
 

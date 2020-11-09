@@ -2,7 +2,7 @@ const axios = require("axios");
 const BASE_URL = "https://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys,generateBackgroundColors } = require("../../utils");
-module.exports.consolidated = async (data, token) => {
+module.exports.absentees = async (data, token) => {
     const URL = BASE_URL + "/api/v1/sales/consolidated";
     const resp = await axios.post(URL, data, {
         headers: {
