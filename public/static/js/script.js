@@ -180,26 +180,35 @@ setUserResponse("hi");
                     "initialSort":[{column:"name", dir:"asc"}]
                 },
                 "metadata":{
-                    id:12
-                },
-                "name":"Shampoo",
-                "totalAmount": 2000.50,
-                "counts": 20
-                },
-                {
-                "name":"Shampoo",
-                "totalAmount": 2000.50,
-                "counts": 20
+                    title:"Nandha Outlet",
+                    data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                    {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                    {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+                }
                 },
                 {
-                "name":"Shampoo",
-                "totalAmount": 2000.50,
-                "counts": 20
+                "metadata":{
+                    title:"Nandha Outlet",
+                    data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                    {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                    {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+                },
                 },
                 {
-                "name":"Shampoo",
-                "totalAmount": 2000.50,
-                "counts": 20
+                    "metadata":{
+                        title:"Nandha Outlet",
+                        data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                        {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                        {title:"val2",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+                    },
+                },
+                {
+                    "metadata":{
+                        title:"Nandha Outlet",
+                        data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                        {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                        {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+                    },
                 }
                 ]
             }
@@ -213,13 +222,13 @@ setUserResponse("hi");
                 "payload":"graphCardsCarousel",
                 "outlets":[
                 {
-         "metadata":{
-            "val1":"aaa",
-            "val2":"bbbb",
-            "val3":"ccc",
-            "val4":'ddd'
-
-         },"title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+                "metadata":{
+                    title:"Nandha Outlet",
+                    data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                    {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+                    {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+                },
+         "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
                 },
                 {
          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
@@ -793,13 +802,13 @@ function createSimpleCardsCarousel(cardsData) {
     let cards = "";
 
     for (i = 0; i < cardsData.length; i++) {
-        let title = cardsData[i].name;
-        let counts = cardsData[i].counts;
-        let totalAmount = cardsData[i].totalAmount;
+        let title = cardsData[i].metadata.title;
+        let ele1 = cardsData[i].metadata.data[0];
+        let ele2 = cardsData[i].metadata.data[1];
         let table = cardsData[i].table;
         let metadata = cardsData[i].metadata;
         let item;
-        if(table && metadata)
+        if(table && metadata.data.length>2)
         {
             item = `<div class="simple_carousel_cards in-left">
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
@@ -809,8 +818,8 @@ function createSimpleCardsCarousel(cardsData) {
             <p>
             <span class="modal-trigger-table" data-payload = '${JSON.stringify(table)}' id="modaltableexp" title="Table" href="#modal3">
             <i class="fa fa-external-link" style="margin-top:40px;" aria-hidden="true"></i></span>
-            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
-            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            <span class="simpleCardCounts">${ele1.title}:<span class="countamount">${ele1.value}</span></span>
+            <span class="simpleCardAmount">${ele2.title}:<span class="countamount">${ele2.value}</span></span>
             </p>
             </div>`;
             
@@ -822,20 +831,20 @@ function createSimpleCardsCarousel(cardsData) {
             <p>
             <span class="modal-trigger-table" data-payload = '${JSON.stringify(table)}' id="modaltableexp" title="Table" href="#modal3">
             <i class="fa fa-external-link" style="margin-top:40px;" aria-hidden="true"></i></span>
-            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
-            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            <span class="simpleCardCounts">Bill counts:<span class="countamount">${ele1.value}</span></span>
+            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${ele2.value}</span></span>
             </p>
             </div>`;
         }
-        else if(metadata){
+        else if(metadata.data.length<=2){
             item = `<div class="simple_carousel_cards in-left">
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
             <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
             <i class="fa fa-eye"  aria-hidden="true"></i></span>
             </div>
             <p>
-            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
-            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            <span class="simpleCardCounts">Bill counts:<span class="countamount">${ele1.value}</span></span>
+            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${ele2.value}</span></span>
             </p>
             </div>`;
         }
@@ -844,9 +853,8 @@ function createSimpleCardsCarousel(cardsData) {
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
             </div>
             <p>
-            <div><i class="fas fa-money-bill-wave"></i></div>
-            <span class="simpleCardCounts">Bill counts:<span class="countamount">${counts}</span></span>
-            <span class="simpleCardAmount">Total amount:<span class="countamount">₹${totalAmount}</span></span>
+            <span class="simpleCardCounts">${ele1.title}:<span class="countamount">${ele1.value}</span></span>
+            <span class="simpleCardAmount">${ele2.title}:<span class="countamount">₹${ele2.value}</span></span>
             </p>
             </div>`;
         }
@@ -1266,16 +1274,16 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 
 $(document).on("click", ".modal-trigger-card", function() {
     let payload = JSON.parse(this.getAttribute('data-payload'));
-    const html = `
-    <div class="cardpreviewHeader" ><span class="cardpreviewTitle">Nandha Outlet</span></div>
-    <span class="cardpreviewdata"><div>Required_Date</div><div class="cardpreviewvariables">asasas</div></span>
-    <span class="cardpreviewdata"><div>val2</div> <div class="cardpreviewvariables">kjkjkjk</div></span>
-    <span class="cardpreviewdata"><div>val3</div><div class="cardpreviewvariables">aaascvhchzckcasckschcdycdcydvcyvchdcvydv</div></span>
-    <span class="cardpreviewdata"><div>val4</div><div class="cardpreviewvariables">asas</div></span>
-    <span class="cardpreviewdata"><div>val5</div><div class="cardpreviewvariables">asas</div></span>
-    <span class="cardpreviewdata"><div>val6</div><div class="cardpreviewvariables">asas</div></span>
-    `;
+    let title = payload.title;
+    let data = payload.data;
 
+    let html = `<div class="cardpreviewHeader" ><span class="cardpreviewTitle">${title}</span></div>`;
+    let eles = "";
+    for(let i=0;i<data.length;i++){
+        let ele = data[i];
+        eles = eles + `<span class="cardpreviewdata"><div class="cardpreviewtitles">${ele.title}</div><div class="cardpreviewvariables">${ele.value}</div></span>`;
+    }
+    html = html + eles;
     $('#modal2').html(html);
     $('#modal2').modal({dismissible:true});
     $('#modal2').modal('open');

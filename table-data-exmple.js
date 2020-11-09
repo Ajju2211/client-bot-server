@@ -48,3 +48,14 @@ var tabledata = [
             {title:"Car", field:"car", width:80,  align:"center", formatter:"tickCross", sorter:"boolean", editor:true},
         ],
     });
+
+
+        // const html = `
+    // <div class="cardpreviewHeader" ><span class="cardpreviewTitle">Nandha Outlet</span></div>
+    // <span class="cardpreviewdata"><div>Required_Date</div><div class="cardpreviewvariables">asasas</div></span>
+    // <span class="cardpreviewdata"><div>val2</div> <div class="cardpreviewvariables">kjkjkjk</div></span>
+    // <span class="cardpreviewdata"><div>val3</div><div class="cardpreviewvariables">aaascvhchzckcasckschcdycdcydvcyvchdcvydv</div></span>
+    // <span class="cardpreviewdata"><div>val4</div><div class="cardpreviewvariables">asas</div></span>
+    // <span class="cardpreviewdata"><div>val5</div><div class="cardpreviewvariables">asas</div></span>
+    // <span class="cardpreviewdata"><div>val6</div><div class="cardpreviewvariables">asas</div></span>
+    // `;
