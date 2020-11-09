@@ -613,6 +613,10 @@ Elements
     top: 40%;
     margin-left:4%;
     position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .simpleCardAmount {
@@ -620,6 +624,10 @@ Elements
     top: 60%;
     margin-left:4%;
     position: absolute;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
 }
 .countamount{
  font-weight: 700;
