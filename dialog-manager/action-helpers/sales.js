@@ -1,5 +1,5 @@
 const axios = require("axios");
-const BASE_URL = "https://client-bot-server.herokuapp.com";
+const BASE_URL = "http://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys,generateBackgroundColors } = require("../../utils");
 module.exports.consolidated = async (data, token) => {

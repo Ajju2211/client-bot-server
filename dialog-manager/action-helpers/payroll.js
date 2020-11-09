@@ -1,164 +1,151 @@
 const axios = require("axios");
-const BASE_URL = "https://client-bot-server.herokuapp.com";
+const BASE_URL = "http://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
-const { renameKeys,generateBackgroundColors } = require("../../utils");
+const { renameKeys, generateBackgroundColors } = require("../../utils");
 module.exports.absentees = async (data, token) => {
-    const URL = BASE_URL + "/api/v1/sales/consolidated";
-    const resp = await axios.post(URL, data, {
-        headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-        },
+  const URL = BASE_URL + "/api/v1/payroll/absentees";
+  const resp = await axios.post(URL, data, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  let result = resp.data.result;
+  let d = data.for;
+  let textMessage = `${d}'s Absentees`;
+  let cards = [];
+  if (data.for === "week" || data.for === "month") {
+    d = "Last Week";
+    textMessage = `${d}'s Absentees from ${data.from} - ${data.to}`;
+  }
+  // textMessage += `\n Total Bills - ${result.totaldata.bill_count} \n Total Sales - ${result.totaldata.totalsale}`;
+  let id = 0;
+  result.forEach((outlet) => {
+    let obj = {};
+    obj.table = {};
+    obj.metadata = {};
+    obj.table.tableData = [];
+    outlet.details.forEach((detail) => {
+      obj.table.tableData.push({
+        id: id,
+        name: detail.name,
+      });
     });
-    let result = resp.data.result;
-    let d = data.for;
-    let textMessage = `${d}'s Consolidated sales`;
-    let cards = [];
-    if (data.for === "week" || data.for === "month") {
-        d = "Last Week";
-        textMessage = `${d}'s Consolidated sales from ${data.from} - ${data.to}`;
-    }
-    textMessage += `\n Total Bills - ${result.totaldata.bill_count} \n Total Sales - ${result.totaldata.totalsale}`;
-    const keysMap = {
-        outletname: "name",
-        bill_count: "counts",
-        totalsale: "totalAmount",
-    };
-    result.data.forEach((outlet) => {
-        cards.push(renameKeys(keysMap, outlet));
-    });
+    obj.table.columns = [
+      {
+        title: "Name",
+        field: "name",
+      },
+    ];
+    obj.table.initialSort = [{ column: "name", dir: "asc" }];
+    obj.metadata.title = outlet.outlet_name;
+    obj.metadata.data = [
+      {
+        title: "Category",
+        value: outlet.category_name,
+      },
+      {
+        title: "Absentees",
+        value: outlet.absentees_count,
+      },
+    ];
+    cards.push(obj);
+    id++;
+  });
 
-    return buildResponse({ text: textMessage, cards: cards });
+  return buildResponse({ cards: cards });
 };
 
-module.exports.topitems = async (data, token) => {
-    const URL = BASE_URL + "/api/v1/sales/topitems";
+
+
+module.exports.avg_working_hrs = async (data, token) => {
+  const URL = BASE_URL + "/api/v1/payroll/avg-working-hours";
+  const resp = await axios.post(URL, data, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  let result = resp.data.result;
+  let cardWithGraph = [];
+  const CHARTTYPE = "bar";
+  const DIPLAYLEGEND = "true";
+  result.forEach((outlet) => {
+    let labels = [];
+    // Y-Axis
+    let chartData = [];
+    outlet.details.forEach((detail) => {
+      labels.push(detail.name);
+      chartData.push(detail.avg_working_hours);
+    });
+    cardWithGraph.push({
+      metadata: {
+        title: outlet.outlet_name,
+        data: [
+          {
+            title: "Category",
+            value: outlet.category_name,
+          },
+          {
+            title: "Total",
+            value: outlet.total_working_hours + " hrs",
+          },
+        ],
+      },
+      title: outlet.outlet_name,
+      labels: labels,
+      chartsData: chartData,
+      backgroundColor: generateBackgroundColors(chartData.length),
+      chartType: CHARTTYPE,
+      displayLegend: DIPLAYLEGEND,
+    });
+  });
+
+  return buildResponse({ chartCards: cardWithGraph });
+};
+
+module.exports.avg_costing = async (data, token) => {
+    const URL = BASE_URL + "/api/v1/payroll/avg-costing";
     const resp = await axios.post(URL, data, {
-        headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-        },
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
     });
     let result = resp.data.result;
-    let d = data.for;
-    let textMessage = `${d}'s Top Items`;
     let cardWithGraph = [];
-    if (data.for === "week" || data.for === "month") {
-        d = "Last Week";
-        textMessage = `${d}'s Top Items from ${data.from} - ${data.to}`;
-    }
-    textMessage += `\n Total Quantities - ${result.totaldata.total_qty} \n Total Amount - ${result.totaldata.total_amt}`;
     const CHARTTYPE = "bar";
     const DIPLAYLEGEND = "true";
-    result.data.forEach(outlet => {
-        let labels = [];
-        // Y-Axis
-        let chartData = [];
-        // Intersection of X-Y axes.
-        let chartIntersectData = [];
-        outlet.items.forEach(item => {
-            labels.push(item.itemname);
-            chartData.push(item.total_amt);
-            chartIntersectData.push(item.total_qty);
-        });
-        cardWithGraph.push({
-            title:outlet.outletname,
-            labels:labels,
-            chartsData:chartData,
-            chartsIntersectData:chartIntersectData,
-            backgroundColor:generateBackgroundColors(chartData.length),
-            chartType:CHARTTYPE,
-            displayLegend:DIPLAYLEGEND
-        });
-    });
-
-    return buildResponse({ text: textMessage, chartCards: cardWithGraph });
-};
-
-module.exports.topcategories = async (data, token) => {
-    const URL = BASE_URL + "/api/v1/sales/topcategories";
-    const resp = await axios.post(URL, data, {
-        headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
+    result.forEach((outlet) => {
+      let labels = [];
+      // Y-Axis
+      let chartData = [];
+      outlet.details.forEach((detail) => {
+        labels.push(detail.name);
+        chartData.push(detail.avg_costing);
+      });
+      cardWithGraph.push({
+        metadata: {
+          title: outlet.outlet_name,
+          data: [
+            {
+              title: "Category",
+              value: outlet.category_name,
+            },
+            {
+              title: "Total",
+              value: outlet.total_costing,
+            },
+          ],
         },
+        title: outlet.outlet_name,
+        labels: labels,
+        chartsData: chartData,
+        backgroundColor: generateBackgroundColors(chartData.length),
+        chartType: CHARTTYPE,
+        displayLegend: DIPLAYLEGEND,
+      });
     });
-    let result = resp.data.result;
-    let d = data.for;
-    let textMessage = `${d}'s Top Categories`;
-    let cardWithGraph = [];
-    if (data.for === "week" || data.for === "month") {
-        d = "Last Week";
-        textMessage = `${d}'s Top Categories from ${data.from} - ${data.to}`;
-    }
-    textMessage += `\n Total Quantities - ${result.totaldata.total_qty} \n Total Amount - ${result.totaldata.total_amt}`;
-    const CHARTTYPE = "bar";
-    const DIPLAYLEGEND = "true";
-    result.data.forEach(outlet => {
-        let labels = [];
-        // Y-Axis
-        let chartData = [];
-        // Intersection of X-Y axes.
-        let chartIntersectData = [];
-        outlet.category.forEach(item => {
-            labels.push(item.itemname);
-            chartData.push(item.total_amt);
-            chartIntersectData.push(item.total_qty);
-        });
-        cardWithGraph.push({
-            title:outlet.outletname,
-            labels:labels,
-            chartsData:chartData,
-            chartsIntersectData:chartIntersectData,
-            backgroundColor:generateBackgroundColors(chartData.length),
-            chartType:CHARTTYPE,
-            displayLegend:DIPLAYLEGEND
-        });
-    });
-
-    return buildResponse({ text: textMessage, chartCards: cardWithGraph });
-};
-
-module.exports.topordertypes = async (data, token) => {
-    const URL = BASE_URL + "/api/v1/sales/topordertypes";
-    const resp = await axios.post(URL, data, {
-        headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-        },
-    });
-    let result = resp.data.result;
-    let d = data.for;
-    let textMessage = `${d}'s Top OrderTypes`;
-    let cardWithGraph = [];
-    if (data.for === "week" || data.for === "month") {
-        d = "Last Week";
-        textMessage = `${d}'s Top OrderTypes from ${data.from} - ${data.to}`;
-    }
-    textMessage += `\n Total Quantities - ${result.totaldata.total_qty} \n Total Amount - ${result.totaldata.total_amt}`;
-    const CHARTTYPE = "bar";
-    const DIPLAYLEGEND = "true";
-    result.data.forEach(outlet => {
-        let labels = [];
-        // Y-Axis
-        let chartData = [];
-        // Intersection of X-Y axes.
-        let chartIntersectData = [];
-        outlet.order_type.forEach(item => {
-            labels.push(item.itemname);
-            chartData.push(item.total_amt);
-            chartIntersectData.push(item.total_qty);
-        });
-        cardWithGraph.push({
-            title:outlet.outletname,
-            labels:labels,
-            chartsData:chartData,
-            chartsIntersectData:chartIntersectData,
-            backgroundColor:generateBackgroundColors(chartData.length),
-            chartType:CHARTTYPE,
-            displayLegend:DIPLAYLEGEND
-        });
-    });
-
-    return buildResponse({ text: textMessage, chartCards: cardWithGraph });
-};
+  
+    return buildResponse({ chartCards: cardWithGraph });
+  };

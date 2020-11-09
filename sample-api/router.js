@@ -56,12 +56,9 @@ router
 // avg_working_hours API
 router
     .post('/payroll/avg-working-hours',payroll.avg_working_hrs);
-// avg_daily_costing API
+// avg_costing API
 router
-    .post('/payroll/avg-daily-costing',payroll.avg_daily_costing);
-// pavg-monthly-costing API
-router
-    .post('/payroll/avg-monthly-costing',payroll.avg_monthly_costing);
+    .post('/payroll/avg-costing',payroll.avg_costing);
 
 // inventory API
 // pending_purchases

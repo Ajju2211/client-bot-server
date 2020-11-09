@@ -8,6 +8,18 @@ module.exports = {
           title: "Sales",
           payload: "/main.sales",
         },
+        {
+          title: "Reconciliations",
+          payload: "/main.recon",
+        },
+        {
+          title: "Payroll",
+          payload: "/main.payroll",
+        },
+        {
+          title: "Inventory",
+          payload: "/main.inventory",
+        },
       ],
     }),
   "greetings.bye": () =>
@@ -146,7 +158,7 @@ module.exports = {
         },
       ],
     }),
-    "main.payroll": () =>
+  "main.payroll": () =>
     buildResponse({
       text: "Select the Payroll type.",
       buttons: [
@@ -164,7 +176,7 @@ module.exports = {
         },
       ],
     }),
-    "main.payroll.absentees": () =>
+  "main.payroll.absentees": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -186,7 +198,7 @@ module.exports = {
         },
       ],
     }),
-    "main.payroll.avg_working_hrs": () =>
+  "main.payroll.avg_working_hrs": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -208,7 +220,7 @@ module.exports = {
         },
       ],
     }),
-    "main.payroll.avg_costing": () =>
+  "main.payroll.avg_costing": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -219,6 +231,430 @@ module.exports = {
         {
           title: "Monthly",
           payload: "/main.payroll.avg_costing.lastmonth",
+        },
+      ],
+    }),
+  "main.recon": () =>
+    buildResponse({
+      text: "Select the Reconciliation type.",
+      buttons: [
+        {
+          title: "Variance",
+          payload: "/main.recon.variance",
+        },
+        {
+          title: "Cancellations",
+          payload: "/main.recon.cancellations",
+        },
+        {
+          title: "Cash Deposit Report",
+          payload: "/main.recon.cdreport",
+        },
+        {
+          title: "EDC Report",
+          payload: "/main.recon.edcreport",
+        },
+        {
+          title: "Expense Tab",
+          payload: "/main.recon.expensetab",
+        },
+        {
+          title: "Pending Payouts",
+          payload: "/main.recon.pendingpayouts",
+        },
+      ],
+    }),
+  "main.recon.variance": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Yesterday",
+          payload: "/main.recon.variance.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.recon.variance.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.recon.variance.lastmonth",
+        },
+      ],
+    }),
+  "main.recon.cancellations": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.recon.cancellations.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.recon.cancellations.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.recon.cancellations.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.recon.cancellations.lastmonth",
+        },
+      ],
+    }),
+  "main.recon.cdreport": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.recon.cdreport.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.recon.cdreport.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.recon.cdreport.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.recon.cdreport.lastmonth",
+        },
+      ],
+    }),
+  "main.recon.edcreport": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.recon.edcreport.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.recon.edcreport.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.recon.edcreport.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.recon.edcreport.lastmonth",
+        },
+      ],
+    }),
+  "main.recon.expensetab": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.recon.expensetab.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.recon.expensetab.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.recon.expensetab.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.recon.expensetab.lastmonth",
+        },
+      ],
+    }),
+  "main.recon.pendingpayouts": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.recon.pendingpayouts.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.recon.pendingpayouts.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.recon.pendingpayouts.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.recon.pendingpayouts.lastmonth",
+        },
+      ],
+    }),
+  "main.inventory": () =>
+    buildResponse({
+      text: "Select the Inventory type.",
+      buttons: [
+        {
+          title: "Pending purchases",
+          payload: "/main.inventory.pendingpurchases",
+        },
+        {
+          title: "Pending Vendor payments",
+          payload: "/main.inventory.pendingvendorpayments",
+        },
+        {
+          title: "Pending Indents",
+          payload: "/main.inventory.pendingindents",
+        },
+        {
+          title: "Pending Physical Checks",
+          payload: "/main.inventory.pendingphysicalchecks",
+        },
+        {
+          title: "Pending Productions",
+          payload: "/main.inventory.pendingproductions",
+        },
+        {
+          title: "Wastages",
+          payload: "/main.inventory.wastages",
+        },
+        {
+          title: "Cost of goods",
+          payload: "/main.inventory.pendingpayouts",
+        },
+        {
+          title: "Food cost",
+          payload: "/main.inventory.costgoods",
+        },
+        {
+          title: "High/Low Margin Items",
+          payload: "/main.inventory.marginitems",
+        },
+        {
+          title: "Loss making Items",
+          payload: "/main.inventory.lossitems",
+        },
+      ],
+    }),
+    "main.inventory.pendingpurchases": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.pendingpurchases.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.pendingpurchases.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.pendingpurchases.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.pendingpurchases.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.pendingvendorpayments": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.pendingvendorpayments.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.pendingvendorpayments.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.pendingvendorpayments.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.pendingvendorpayments.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.pendingindents": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.pendingindents.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.pendingindents.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.pendingindents.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.pendingindents.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.pendingphysicalchecks": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.pendingphysicalchecks.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.pendingphysicalchecks.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.pendingphysicalchecks.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.pendingphysicalchecks.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.pendingproductions": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.pendingproductions.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.pendingproductions.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.pendingproductions.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.pendingproductions.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.wastages": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.wastages.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.wastages.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.wastages.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.wastages.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.costgoods": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.costgoods.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.costgoods.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.costgoods.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.costgoods.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.foodcost": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.foodcost.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.foodcost.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.foodcost.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.foodcost.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.marginitems": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.marginitems.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.marginitems.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.marginitems.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.marginitems.lastmonth",
+        },
+      ],
+    }),
+    "main.inventory.lossitems": () =>
+    buildResponse({
+      text: "Please select on which dates you want to see.",
+      buttons: [
+        {
+          title: "Today",
+          payload: "/main.inventory.lossitems.today",
+        },
+        {
+          title: "Yesterday",
+          payload: "/main.inventory.lossitems.yesterday",
+        },
+        {
+          title: "Last Week",
+          payload: "/main.inventory.lossitems.lastweek",
+        },
+        {
+          title: "Last Month",
+          payload: "/main.inventory.lossitems.lastmonth",
         },
       ],
     }),

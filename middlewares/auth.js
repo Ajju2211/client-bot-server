@@ -105,7 +105,7 @@ exports.protect = async (req, res, next) => {
     console.log(decoded);
     // 3) get user details
     // const currentUser = db.find((ele) => ele.email == decoded.id);
-    const url = "https://client-bot-server.herokuapp.com/api/v1/user/verifyUser";
+    const url = "http://client-bot-server.herokuapp.com/api/v1/user/verifyUser";
     const dataRes = await axios.post(url,{email_id:decoded.id},{
       headers:{
         "Content-Type": "application/json"

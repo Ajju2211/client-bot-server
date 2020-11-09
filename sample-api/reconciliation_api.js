@@ -222,16 +222,6 @@ const db = [
             "outlet_name": "outlet1",
             "details": [
                 {
-                    "main_category": "HR",
-                    "sub_category": "HR",
-                    "amount": 0
-                },
-                {
-                    "main_category": "Office",
-                    "sub_category": "Laptop",
-                    "amount": 0
-                },
-                {
                     "aggregator": "Dunzo",
                     "sales": 0,
                     "amount_credited": 0
