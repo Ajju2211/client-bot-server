@@ -66,7 +66,7 @@ exports.login = async (req, res) => {
   const token = signToken(user.email);
 
   // 3)Sending Userdata and Token , maxAge is 7 days
-  res.cookie("jwt", token, { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true });
+  res.cookie("jwt", token, { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true, sameSite: 'none', secure: true });
   res.status(200).json({
     status: "success",
     token,

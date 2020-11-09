@@ -19,13 +19,22 @@ module.exports.consolidated = async (data, token) => {
         textMessage = `${d}'s Consolidated sales from ${data.from} - ${data.to}`;
     }
     textMessage += `\n Total Bills - ${result.totaldata.bill_count} \n Total Sales - ${result.totaldata.totalsale}`;
-    const keysMap = {
-        outletname: "name",
-        bill_count: "counts",
-        totalsale: "totalAmount",
-    };
     result.data.forEach((outlet) => {
-        cards.push(renameKeys(keysMap, outlet));
+        let obj = {};
+        obj.title = outlet.outletname;
+        obj.metadata = {};
+        obj.metadata.title = outlet.outletname;
+        obj.metadata.data = [
+            {
+            title:"Bill Counts",
+            value:outlet.bill_count
+            },
+            {
+                title:"Total Sales",
+                value:outlet.totalsale
+            }
+    ]
+    cards.push(obj);
     });
 
     return buildResponse({ text: textMessage, cards: cards });
