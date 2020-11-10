@@ -478,8 +478,8 @@ module.exports.marginitems = async (data, token) => {
   return buildResponse({ cards: cards });
 };
 
-module.exports.foodcosts = async (data, token) => {
-  const URL = BASE_URL + "/api/v1/inventory/food-cost";
+module.exports.lossitems = async (data, token) => {
+  const URL = BASE_URL + "/api/v1/inventory/loss-making-items";
   const resp = await axios.post(URL, data, {
     headers: {
       "Content-Type": "application/json",
@@ -495,15 +495,14 @@ module.exports.foodcosts = async (data, token) => {
     obj.metadata = {};
     obj.table.tableData = [];
     outlet.dishes.forEach((dish) => {
-      obj.table.tableData.push({
-        id: id,
-        name: dish.dish_name,
-        category: dish.category_name,
-        cost: dish.cost,
-        dish_sold: dish.dish_sold,
-        average_dish_selling_price: dish.average_dish_selling_price,
-        food_cost: dish.food_cost,
-        wastage_amount: dish.wastage_amount,
+      dish.order_type.forEach(otype => {
+        obj.table.tableData.push({
+          id: id,
+          name: dish.dish_name,
+          category: dish.category_name,
+          order_type:otype.order_type,
+          amount:otype.amount
+        });        
       });
     });
     obj.table.columns = [
@@ -516,25 +515,13 @@ module.exports.foodcosts = async (data, token) => {
         field: "category",
       },
       {
-        title: "Cost",
-        field: "cost",
+        title: "Order Type",
+        field: "order_type",
       },
       {
-        title: "Dish Sold",
-        field: "dish_sold",
-      },
-      {
-        title: "Avg. S.P",
-        field: "average_dish_selling_price",
-      },
-      {
-        title: "Food cost",
-        field: "food_cost",
-      },
-      {
-        title: "Wastage Amt.",
-        field: "wastage_amount",
-      },
+        title: "Amount",
+        field: "amount",
+      }
     ];
     obj.table.initialSort = [{ column: "name", dir: "asc" }];
     obj.metadata.title = outlet.outletname;
@@ -554,4 +541,3 @@ module.exports.foodcosts = async (data, token) => {
 
   return buildResponse({ cards: cards });
 };
-
