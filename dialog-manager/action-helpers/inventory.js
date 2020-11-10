@@ -12,7 +12,9 @@ module.exports.pendingpurchases = async (data, token) => {
   });
   let result = resp.data.result;
   let cardWithGraph = [];
-  result.data.forEach((outlet) => {
+  const CHARTTYPE = 'bar';
+  const DIPLAYLEGEND = 'true';
+  result.forEach((outlet) => {
     let labels = [];
     // Y-Axis
     let chartData = [];
@@ -67,7 +69,7 @@ module.exports.pendingvendorpayments = async (data, token) => {
   let cardWithGraph = [];
   const CHARTTYPE = "bar";
   const DIPLAYLEGEND = "true";
-  result.data.forEach((outlet) => {
+  result.forEach((outlet) => {
     let labels = [];
     // Y-Axis
     let chartData = [];
@@ -98,7 +100,9 @@ module.exports.pendingindents = async (data, token) => {
   });
   let result = resp.data.result;
   let cardWithGraph = [];
-  result.data.forEach((outlet) => {
+  const CHARTTYPE = 'bar';
+  const DIPLAYLEGEND = 'true';
+  result.forEach((outlet) => {
     let labels = [];
     // Y-Axis
     let chartData = [];
@@ -152,7 +156,7 @@ module.exports.pendingphysicalchecks = async (data, token) => {
   let cardWithGraph = [];
   const CHARTTYPE = "bar";
   const DIPLAYLEGEND = "true";
-  result.data.forEach((outlet) => {
+  result.forEach((outlet) => {
     let labels = [];
     // Y-Axis
     let chartData = [];
@@ -185,7 +189,7 @@ module.exports.pendingproductions = async (data, token) => {
   let cardWithGraph = [];
   const CHARTTYPE = "bar";
   const DIPLAYLEGEND = "true";
-  result.data.forEach((outlet) => {
+  result.forEach((outlet) => {
     let labels = [];
     // Y-Axis
     let chartData = [];
@@ -215,9 +219,10 @@ module.exports.wastages = async (data, token) => {
     },
   });
   let result = resp.data.result;
+  console.log(resp);
   let cards = [];
   let id = 0;
-  result.data.forEach((outlet) => {
+  result.forEach((outlet) => {
     let obj = {};
     obj.table = {};
     obj.metadata = {};
@@ -279,7 +284,7 @@ module.exports.costgoods = async (data, token) => {
   let result = resp.data.result;
   let cards = [];
   let id = 0;
-  result.data.forEach((outlet) => {
+  result.forEach((outlet) => {
     let obj = {};
     obj.table = {};
     obj.metadata = {};
@@ -336,7 +341,7 @@ module.exports.foodcosts = async (data, token) => {
   let result = resp.data.result;
   let cards = [];
   let id = 0;
-  result.data.forEach((outlet) => {
+  result.forEach((outlet) => {
     let obj = {};
     obj.table = {};
     obj.metadata = {};

@@ -666,10 +666,9 @@ module.exports.wastages = async (req, res) => {
         message: "INVALID AUTHORIZATION",
       });
     }
-
     return res.status(200).json({
       status: "success",
-      result: data.avg_monthly_costing,
+      result: data.wastages,
     });
   } catch (err) {
     res.status(500).json({
