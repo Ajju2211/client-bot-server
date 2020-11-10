@@ -2,6 +2,8 @@ const axios = require("axios");
 const BASE_URL = "http://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys, generateBackgroundColors } = require("../../utils");
+
+
 module.exports.pendingpurchases = async (data, token) => {
   const URL = BASE_URL + "/api/v1/inventory/pending-purchases";
   const resp = await axios.post(URL, data, {
@@ -55,8 +57,11 @@ module.exports.pendingpurchases = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  const BACK_BUTTON = [{
+    title:"Back",
+    payload:"/main.inventory.pendingpurchases"
+  }];
+  return buildResponse({buttons:BACK_BUTTON, chartCards: cardWithGraph });
 };
 
 module.exports.pendingvendorpayments = async (data, token) => {
@@ -89,8 +94,11 @@ module.exports.pendingvendorpayments = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  const BACK_BUTTON = [{
+    title:"Back",
+    payload:"/main.inventory.pendingvendorpayments"
+  }];
+  return buildResponse({buttons:BACK_BUTTON, chartCards: cardWithGraph });
 };
 
 module.exports.pendingindents = async (data, token) => {
@@ -146,8 +154,11 @@ module.exports.pendingindents = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  const BACK_BUTTON = [{
+    title:"Back",
+    payload:"/main.inventory.pendingindents"
+  }];
+  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph });
 };
 module.exports.pendingphysicalchecks = async (data, token) => {
   const URL = BASE_URL + "/api/v1/inventory/pending-physical-checks";
@@ -179,8 +190,11 @@ module.exports.pendingphysicalchecks = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  const BACK_BUTTON = [{
+    title:"Back",
+    payload:"/main.inventory.pendingphysicalchecks"
+  }];
+  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph });
 };
 
 module.exports.pendingproductions = async (data, token) => {
@@ -213,8 +227,11 @@ module.exports.pendingproductions = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  const BACK_BUTTON = [{
+    title:"Back",
+    payload:"/main.inventory.pendingproductions"
+  }];
+  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph });
 };
 
 module.exports.wastages = async (data, token) => {
@@ -276,8 +293,11 @@ module.exports.wastages = async (data, token) => {
     cards.push(obj);
     id++;
   });
-
-  return buildResponse({ cards: cards });
+  const BACK_BUTTON = [{
+    title:"Back",
+    payload:"/main.inventory.wastages"
+  }];
+  return buildResponse({ buttons:BACK_BUTTON, cards: cards });
 };
 
 module.exports.costgoods = async (data, token) => {
@@ -333,8 +353,11 @@ module.exports.costgoods = async (data, token) => {
     cards.push(obj);
     id++;
   });
-
-  return buildResponse({ cards: cards });
+  const BACK_BUTTON = [{
+    title:"Back",
+    payload:"/main.inventory.costgoods"
+  }];
+  return buildResponse({ buttons:BACK_BUTTON, cards: cards });
 };
 
 module.exports.foodcost = async (data, token) => {

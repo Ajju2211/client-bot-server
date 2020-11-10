@@ -353,7 +353,12 @@ function scrollToBottomOfResults() {
 
 //============== send the user message to rasa server =============================================
 function send(message) {
-
+    // Destroy modal and charts and cards if opened
+    $(".chart-container").remove();
+    $(".chart-container1").remove();
+    if (typeof modalChart !== 'undefined') { modalChart.destroy(); }
+    $("#paginated_cards").remove();
+    
     $.ajax({
         url: "/user/bot/webhook",
         type: "POST",
@@ -374,6 +379,8 @@ function send(message) {
                 // action_trigger();
                 return;
             }
+
+            // now set the response
             setBotResponse(botResponse);
 
         },
@@ -1562,7 +1569,7 @@ function login() {
     if(email.length < 1 || password.length < 1){
         return;
     }
-    
+
     $.ajax({
         url: "/user/login",
         type: "POST",
