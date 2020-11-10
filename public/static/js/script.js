@@ -909,7 +909,7 @@ function drawCardGraphs() {
                     }
                 },
                 legend: {
-                    display: displayLegend,
+                    display: cardChartData.displayLegend,
                     position: "right",
                     labels: {
                         boxWidth: 5,
@@ -1472,7 +1472,7 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
         var options = {
             title: {
                 display: true,
-                text: title
+                text: chartName
             },
             tooltips: {
                 mode: 'label'
