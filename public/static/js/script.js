@@ -1577,6 +1577,8 @@ function login() {
         error: function (xhr, textStatus, errorThrown) {
             // display error in ui
             // if there is no response from rasa server
+            $('#login-error').html("Invalid email,password");
+            $('#login-error').show();
             console.log("Error from bot end: ", textStatus);
         }
     });
@@ -1595,8 +1597,9 @@ function loginForm() {
             </div>
         </div>
         <div class="row ">
+            <div class="warning-message" id="login-error" style="display:none"></div>
             <div class="col m12 input-field sform">
-                    <input type="email" class="validate" style="border:none;border-bottom:none;outline:none"  name="email" placeholder="Email">
+                    <input  type="email" class="validate" style="border:none;border-bottom:none;outline:none"  name="email" placeholder="Email">
             </div>
             <div class="input-field col m12 sform">
                     <input type="password" class="validate" style="border:none;border-bottom:none;outline:none" name="password" placeholder="Password">
