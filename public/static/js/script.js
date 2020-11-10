@@ -1,5 +1,5 @@
 //Bot pop-up intro
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // var options = {dismissible:true};
     // var Modalelems = document.querySelectorAll('.modal');
     // var modalinstances = M.Modal.init(Modalelems, options);
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var elemsTap = document.querySelector('.tap-target');
     var instancesTap = M.TapTarget.init(elemsTap, {});
     instancesTap.open();
-    setTimeout(function() { instancesTap.close(); }, 4000);
+    setTimeout(function () { instancesTap.close(); }, 4000);
 
 });
 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 var charts_data = [];
 var card_chart_data = [];
 //initialization
-$(document).ready(function() {
+$(document).ready(function () {
 
 
     //Bot pop-up intro
@@ -32,222 +32,222 @@ $(document).ready(function() {
 
 
     //enable this if u have configured the bot to start the conversation. 
-    // showBotTyping();
+    showBotTyping();
     // $("#userInput").prop('disabled', true);
 
     //global variables
-    action_name = "action_greet_user";
+    action_name = "/greetings.welcome";
     user_id = "userid_unique";
-    
+
     $("#userInput").prop('disabled', true);
 
-    //if you want the bot to start the conversation
-    // action_trigger();
+    // Bot will display welcome message
+    action_trigger();
 
-setUserResponse("hi");
-    setBotResponse([{"text":"welcome to chatbot","image":"https://i.imgur.com/TQ2o0ch.jpeg"},
-        {"image":"https://images2.minutemediacdn.com/image/upload/c_crop,h_1126,w_2000,x_0,y_181/f_auto,q_auto,w_1100/v1554932288/shape/mentalfloss/12531-istock-637790866.jpg"},
-        {"custom":{
-        "payload":"chart",
-        "data":{ "title": "Leaves", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true" }
-    }
-        }
-    ]);
-
-    setBotResponse([
-        {"custom":{
-        "payload":"chart",
-        "data":{ "title": "Leaves1", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true" }
-    }
-        }
-        ]);
-
-    setBotResponse([
-    {
-        "attachment":{   
-            "type": "video", 
-            "payload": { 
-            "title": "Link name", 
-            "src": "https://www.youtube.com/embed/odQu2QxHoZM" 
-                } 
-            },
-            "buttons":[
-                {
-                    "title":"Subscribe",
-                    "payload":"/subscribe"
-                },
-                {
-                    "title":"Click",
-                    "payload":"/clickednow"
-                }
-            ],
-            "custom":{
-                "payload":"quickReplies",
-                "data":[
-                { "title":"chip1", "payload":"chip1_payload" },
-		  { "title":"chip2", "payload":"chip2_payload" },
-		   { "title":"chip3", "payload":"chip3_payload" } ,
-                           { "title":"chip1", "payload":"chip1_payload" },
-          { "title":"chip2", "payload":"chip2_payload" },
-           { "title":"chip3", "payload":"chip3_payload" } 
-                ]
-            }
-    }
-    ]);
-    setBotResponse([{
-        "text":"Hi hhhh",
-        "image":"https://i.imgur.com/TQ2o0ch.jpeg"
-    }]);
-    // setBotResponse([{
-    //     "text":"Hi hhhh",
-    //     "custom":{
-    //         "payload":"cardsCarousel",
-    //         "data":[
-    //         {
-    //             "name":"Dosa",
-    //             "ratings":"4.5",
-    //             "image":"https://www.cookwithmanali.com/wp-content/uploads/2020/05/Masala-Dosa-500x500.jpg"
-    //         },
-    //         {
-    //             "name":"Dosa",
-    //             "ratings":"4.5",
-    //             "image":"https://www.cookwithmanali.com/wp-content/uploads/2020/05/Masala-Dosa-500x500.jpg"
-    //         },
-    //         {
-    //             "name":"Dosa",
-    //             "ratings":"4.5",
-    //             "image":"https://sukhis.com/wp-content/uploads/2020/01/Dosa.jpg"
-    //         }
-    //         ]
+    // setUserResponse("hi");
+    //     setBotResponse([{"text":"welcome to chatbot","image":"https://i.imgur.com/TQ2o0ch.jpeg"},
+    //         {"image":"https://images2.minutemediacdn.com/image/upload/c_crop,h_1126,w_2000,x_0,y_181/f_auto,q_auto,w_1100/v1554932288/shape/mentalfloss/12531-istock-637790866.jpg"},
+    //         {"custom":{
+    //         "payload":"chart",
+    //         "data":{ "title": "Leaves", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true" }
     //     }
-    // }]);
-// SimpleCardsCarousel
-    setBotResponse([
-        {
-            "custom":{
-                "payload":"simpleCardsCarousel",
-                "data":[{
-                "table":{
-                    "tableData":[{
-                        id:1,
-                        name:"Shampoo",
-                        price:80,
-                        qty:1
-                    },
-                    {
-                        id:2,
-                        name:"Meera",
-                        price:30.454,
-                        qty:2
-                    },
-                    {
-                        id:3,
-                        name:"Veera",
-                        price:30.45,
-                        qty:0
-                    },
-                    {
-                        id:4,
-                        name:"Coora",
-                        price:30.45,
-                        qty:10
-                    },
-                    {
-                        id:5,
-                        name:"Clinic",
-                        price:30.45,
-                        qty:5
-                    },
-                    {
-                        id:6,
-                        name:"Pantene",
-                        price:25.65,
-                        qty:3
-                    }],
-                    "columns":[{
-                        title:"Name",
-                        field:"name"
-                    },{
-                        title:"Price",
-                        field:"price",
-                        sorter:"number"
-                    },
-                    {
-                        title:"Quantity",
-                        field:"qty",
-                        sorter:"number"
-                    }],
-                    "initialSort":[{column:"name", dir:"asc"}]
-                },
-                "metadata":{
-                    title:"Nandha Outlet",
-                    data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                    {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                    {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
-                }
-                },
-                {
-                "metadata":{
-                    title:"Nandha Outlet",
-                    data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                    {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                    {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
-                },
-                },
-                {
-                    "metadata":{
-                        title:"Nandha Outlet",
-                        data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                        {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                        {title:"val2",value:"bbbbbbbbbbbbbbbbbbbabab"}]
-                    },
-                },
-                {
-                    "metadata":{
-                        title:"Nandha Outlet",
-                        data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                        {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                        {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
-                    },
-                }
-                ]
-            }
-        }]);
+    //         }
+    //     ]);
 
-// GraphCardsCarousel
-    setBotResponse([
-        {
-            "text":"Displaying card with Graph",
-            "custom":{
-                "payload":"graphCardsCarousel",
-                "outlets":[
-                {
-                "metadata":{
-                    title:"Nandha Outlet",
-                    data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                    {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
-                    {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
-                },
-                "label1":"Label1.",
-                "label2":"Label2.",
-                "chartsIntersectData":[2, 4, 12, 9],
-         "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-                },
-                {
-         "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-                },
-                {
-         "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-                },
-                {
-         "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-                } 
-                
-                ]
-            }
-        }
+    //     setBotResponse([
+    //         {"custom":{
+    //         "payload":"chart",
+    //         "data":{ "title": "Leaves1", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true" }
+    //     }
+    //         }
+    //         ]);
 
-        ]);
+    //     setBotResponse([
+    //     {
+    //         "attachment":{   
+    //             "type": "video", 
+    //             "payload": { 
+    //             "title": "Link name", 
+    //             "src": "https://www.youtube.com/embed/odQu2QxHoZM" 
+    //                 } 
+    //             },
+    //             "buttons":[
+    //                 {
+    //                     "title":"Subscribe",
+    //                     "payload":"/subscribe"
+    //                 },
+    //                 {
+    //                     "title":"Click",
+    //                     "payload":"/clickednow"
+    //                 }
+    //             ],
+    //             "custom":{
+    //                 "payload":"quickReplies",
+    //                 "data":[
+    //                 { "title":"chip1", "payload":"chip1_payload" },
+    // 		  { "title":"chip2", "payload":"chip2_payload" },
+    // 		   { "title":"chip3", "payload":"chip3_payload" } ,
+    //                            { "title":"chip1", "payload":"chip1_payload" },
+    //           { "title":"chip2", "payload":"chip2_payload" },
+    //            { "title":"chip3", "payload":"chip3_payload" } 
+    //                 ]
+    //             }
+    //     }
+    //     ]);
+    //     setBotResponse([{
+    //         "text":"Hi hhhh",
+    //         "image":"https://i.imgur.com/TQ2o0ch.jpeg"
+    //     }]);
+    //     // setBotResponse([{
+    //     //     "text":"Hi hhhh",
+    //     //     "custom":{
+    //     //         "payload":"cardsCarousel",
+    //     //         "data":[
+    //     //         {
+    //     //             "name":"Dosa",
+    //     //             "ratings":"4.5",
+    //     //             "image":"https://www.cookwithmanali.com/wp-content/uploads/2020/05/Masala-Dosa-500x500.jpg"
+    //     //         },
+    //     //         {
+    //     //             "name":"Dosa",
+    //     //             "ratings":"4.5",
+    //     //             "image":"https://www.cookwithmanali.com/wp-content/uploads/2020/05/Masala-Dosa-500x500.jpg"
+    //     //         },
+    //     //         {
+    //     //             "name":"Dosa",
+    //     //             "ratings":"4.5",
+    //     //             "image":"https://sukhis.com/wp-content/uploads/2020/01/Dosa.jpg"
+    //     //         }
+    //     //         ]
+    //     //     }
+    //     // }]);
+    // // SimpleCardsCarousel
+    //     setBotResponse([
+    //         {
+    //             "custom":{
+    //                 "payload":"simpleCardsCarousel",
+    //                 "data":[{
+    //                 "table":{
+    //                     "tableData":[{
+    //                         id:1,
+    //                         name:"Shampoo",
+    //                         price:80,
+    //                         qty:1
+    //                     },
+    //                     {
+    //                         id:2,
+    //                         name:"Meera",
+    //                         price:30.454,
+    //                         qty:2
+    //                     },
+    //                     {
+    //                         id:3,
+    //                         name:"Veera",
+    //                         price:30.45,
+    //                         qty:0
+    //                     },
+    //                     {
+    //                         id:4,
+    //                         name:"Coora",
+    //                         price:30.45,
+    //                         qty:10
+    //                     },
+    //                     {
+    //                         id:5,
+    //                         name:"Clinic",
+    //                         price:30.45,
+    //                         qty:5
+    //                     },
+    //                     {
+    //                         id:6,
+    //                         name:"Pantene",
+    //                         price:25.65,
+    //                         qty:3
+    //                     }],
+    //                     "columns":[{
+    //                         title:"Name",
+    //                         field:"name"
+    //                     },{
+    //                         title:"Price",
+    //                         field:"price",
+    //                         sorter:"number"
+    //                     },
+    //                     {
+    //                         title:"Quantity",
+    //                         field:"qty",
+    //                         sorter:"number"
+    //                     }],
+    //                     "initialSort":[{column:"name", dir:"asc"}]
+    //                 },
+    //                 "metadata":{
+    //                     title:"Nandha Outlet",
+    //                     data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                     {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                     {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+    //                 }
+    //                 },
+    //                 {
+    //                 "metadata":{
+    //                     title:"Nandha Outlet",
+    //                     data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                     {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                     {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+    //                 },
+    //                 },
+    //                 {
+    //                     "metadata":{
+    //                         title:"Nandha Outlet",
+    //                         data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                         {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                         {title:"val2",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+    //                     },
+    //                 },
+    //                 {
+    //                     "metadata":{
+    //                         title:"Nandha Outlet",
+    //                         data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                         {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                         {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+    //                     },
+    //                 }
+    //                 ]
+    //             }
+    //         }]);
+
+    // // GraphCardsCarousel
+    //     setBotResponse([
+    //         {
+    //             "text":"Displaying card with Graph",
+    //             "custom":{
+    //                 "payload":"graphCardsCarousel",
+    //                 "outlets":[
+    //                 {
+    //                 "metadata":{
+    //                     title:"Nandha Outlet",
+    //                     data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                     {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+    //                     {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+    //                 },
+    //                 "label1":"Label1.",
+    //                 "label2":"Label2.",
+    //                 "chartsIntersectData":[2, 4, 12, 9],
+    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+    //                 },
+    //                 {
+    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+    //                 },
+    //                 {
+    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+    //                 },
+    //                 {
+    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+    //                 } 
+
+    //                 ]
+    //             }
+    //         }
+
+    //         ]);
     // setBotResponse([
     //     {
     //         "custom":{
@@ -275,34 +275,11 @@ function restartConversation() {
 
 // ========================== let the bot start the conversation ========================
 function action_trigger() {
-
-    // send an event to the bot, so that bot can start the conversation by greeting the user
-    // https://frendy-rasa-bot-ilsxqqnpkq-uc.a.run.app/
-    $.ajax({
-        url: `https://frendy-rasa-bot-ilsxqqnpkq-uc.a.run.app/conversations/${user_id}/execute`,
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),
-        success: function(botResponse, status) {
-            console.log("Response from Rasa: ", botResponse, "\nStatus: ", status);
-
-            if (botResponse.hasOwnProperty("messages")) {
-                setBotResponse(botResponse.messages);
-            }
-            $("#userInput").prop('disabled', true);
-        },
-        error: function(xhr, textStatus, errorThrown) {
-
-            // if there is no response from rasa server
-            setBotResponse("");
-            console.log("Error from bot end: ", textStatus);
-            $("#userInput").prop('disabled', true);
-        }
-    });
+    send(action_name);
 }
 
 //=====================================	user enter or sends the message =====================
-$(".usrInput").on("keyup keypress", function(e) {
+$(".usrInput").on("keyup keypress", function (e) {
     var keyCode = e.keyCode || e.which;
 
     var text = $(".usrInput").val();
@@ -333,7 +310,7 @@ $(".usrInput").on("keyup keypress", function(e) {
     }
 });
 
-$("#sendButton").on("click", function(e) {
+$("#sendButton").on("click", function (e) {
     var text = $(".usrInput").val();
     if (text == "" || $.trim(text) == "") {
         e.preventDefault();
@@ -383,10 +360,10 @@ function send(message) {
         contentType: "application/json",
         "headers": {
             "accept": "application/json",
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin": "*"
         },
         data: JSON.stringify({ message: message, sender: user_id }),
-        success: function(botResponse, status) {
+        success: function (botResponse, status) {
             console.log("Response from Rasa: ", botResponse, "\nStatus: ", status);
 
             // if user wants to restart the chat and clear the existing chat contents
@@ -400,7 +377,7 @@ function send(message) {
             setBotResponse(botResponse);
 
         },
-        error: function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
 
             if (message.toLowerCase() == '/restart') {
                 // $("#userInput").prop('disabled', false);
@@ -421,7 +398,7 @@ function send(message) {
 function setBotResponse(response) {
 
     //display bot response after 500 milliseconds
-    setTimeout(function() {
+    setTimeout(function () {
         hideBotTyping();
         if (response.length < 1) {
             //if there is no response from Rasa, send  fallback message to the user
@@ -452,7 +429,7 @@ function setBotResponse(response) {
                     $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
                 }
 
-     
+
 
                 //check if the response contains "attachment" 
                 if (response[i].hasOwnProperty("attachment")) {
@@ -473,11 +450,11 @@ function setBotResponse(response) {
 
                     // triggers the login Form and clears the other messages and stops from entering details.
                     // prevents other messages untill logins.
-                   if (response[i].custom.payload == "loginform") {
-                            loginForm();
-                            break;
-                            return;
-                        }
+                    if (response[i].custom.payload == "loginform") {
+                        loginForm();
+                        break;
+                        return;
+                    }
 
                     //check if the custom payload type is "quickReplies"
                     if (response[i].custom.payload == "quickReplies") {
@@ -566,7 +543,7 @@ function setBotResponse(response) {
 }
 
 //====================================== Toggle chatbot =======================================
-$("#profile_div").click(function() {
+$("#profile_div").click(function () {
     $(".profile_div").toggle();
     $(".widget").toggle();
 });
@@ -604,10 +581,10 @@ function renderDropDwon(data) {
     scrollToBottomOfResults();
 
     //add event handler if user selects a option.
-    $("select").change(function() {
+    $("select").change(function () {
         var value = ""
         var label = ""
-        $("select option:selected").each(function() {
+        $("select option:selected").each(function () {
             label += $(this).text();
             value += $(this).val();
         });
@@ -621,7 +598,7 @@ function renderDropDwon(data) {
 //====================================== Suggestions ===========================================
 
 function addSuggestion(textToAdd) {
-    setTimeout(function() {
+    setTimeout(function () {
         let suggestions = textToAdd;
         let suggLength = textToAdd.length;
         // Added clearfix --change
@@ -636,7 +613,7 @@ function addSuggestion(textToAdd) {
 }
 
 // on click of suggestions, get the value and send to rasa
-$(document).on("click", ".menu .menuChips", function() {
+$(document).on("click", ".menu .menuChips", function () {
     var text = this.innerText;
     var payload = this.getAttribute('data-payload');
     console.log("payload: ", this.getAttribute('data-payload'))
@@ -651,28 +628,28 @@ $(document).on("click", ".menu .menuChips", function() {
 //====================================== functions for drop-down menu of the bot  =========================================
 
 //restart function to restart the conversation.
-$("#restart").click(function() {
+$("#restart").click(function () {
     restartConversation()
 });
 
 //clear function to clear the chat contents of the widget.
-$("#clear").click(function() {
-    $(".chats").fadeOut("normal", function() {
+$("#clear").click(function () {
+    $(".chats").fadeOut("normal", function () {
         $(".chats").html("");
         $(".chats").fadeIn();
     });
 });
 
 //close function to close the widget.
-$("#logout").click(function() {
+$("#logout").click(function () {
     $.ajax({
         url: "/user/logout",
         type: "GET",
-        success: function(response, status) {
+        success: function (response, status) {
             console.log("Response from server: ", response, "\nStatus: ", status);
-                setBotResponse(response);
+            setBotResponse(response);
         },
-        error: function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
             // display error in ui
             // if there is no response from rasa server
             console.log("Error from bot end: ", textStatus);
@@ -734,21 +711,21 @@ function createCardsCarousel(cardsData) {
         ratings = Math.round((4 / 5) * 100) + "%";
         data = cardsData[i];
         // sample format of the charts data:
-                       // var chartData = { "title": "Leaves", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "pie", "displayLegend": "true" }
+        // var chartData = { "title": "Leaves", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "pie", "displayLegend": "true" }
 
-                        //store the below parameters as global variable, 
-                        // so that it can be used while displaying the charts in modal.
-                     //   chartData = (response[i].custom.data) //no need
-                        // title = chartData.title;
-                        // labels = chartData.labels;
-                        // backgroundColor = chartData.backgroundColor;
-                        // chartsData = chartData.chartsData;
-                        // chartType = chartData.chartType;
-                        // displayLegend = chartData.displayLegend;
+        //store the below parameters as global variable, 
+        // so that it can be used while displaying the charts in modal.
+        //   chartData = (response[i].custom.data) //no need
+        // title = chartData.title;
+        // labels = chartData.labels;
+        // backgroundColor = chartData.backgroundColor;
+        // chartsData = chartData.chartsData;
+        // chartType = chartData.chartType;
+        // displayLegend = chartData.displayLegend;
 
         item = '<div class="carousel_cards in-left">' + '<img class="cardBackgroundImage" src="' + cardsData[i].image + '"><div class="cardFooter">' + '<span class="cardTitle" title="' + title + '">' + title + "</span> " + '<div class="cardDescription">' + '<div class="stars-outer">' + '<div class="stars-inner" style="width:' + ratings + '" ></div>' + "</div>" + "</div>" + "</div>" + "</div>";
         // chart=createChart(title, labels, backgroundColor, chartsData, chartType, displayLegend);
-        item = '<div class="carousel_cards in-left"> <div>'  +chart+ '</div> <div class="cardFooter">' + '<span class="cardTitle" title="' + title + '">' + title + "</span> " + '<div class="cardDescription">' + '<div class="stars-outer">' + '<div class="stars-inner" style="width:' + ratings + '" ></div>' + "</div>" + "</div>" + "</div>" + "</div>";
+        item = '<div class="carousel_cards in-left"> <div>' + chart + '</div> <div class="cardFooter">' + '<span class="cardTitle" title="' + title + '">' + title + "</span> " + '<div class="cardDescription">' + '<div class="stars-outer">' + '<div class="stars-inner" style="width:' + ratings + '" ></div>' + "</div>" + "</div>" + "</div>" + "</div>";
         cards += item;
     }
 
@@ -769,11 +746,11 @@ function showSimpleCardsCarousel(cardsToAdd) {
     // if (cardsToAdd.length <= 2) {
     //     $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
     // } else {
-        for (var i = 0; i < cardsToAdd.length; i++) {
-            $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
-        }
-        $(".cards .arrow.prev").fadeIn("3000");
-        $(".cards .arrow.next").fadeIn("3000");
+    for (var i = 0; i < cardsToAdd.length; i++) {
+        $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
+    }
+    $(".cards .arrow.prev").fadeIn("3000");
+    $(".cards .arrow.next").fadeIn("3000");
     // }
 
 
@@ -811,8 +788,7 @@ function createSimpleCardsCarousel(cardsData) {
         let table = cardsData[i].table;
         let metadata = cardsData[i].metadata;
         let item;
-        if(table && metadata.data.length>2)
-        {
+        if (table && metadata.data.length > 2) {
             item = `<div class="simple_carousel_cards in-left">
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
             <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
@@ -825,9 +801,9 @@ function createSimpleCardsCarousel(cardsData) {
             <span class="simpleCardAmount">${ele2.title}:<br><span class="countamount">${ele2.value}</span></span>
             </p>
             </div>`;
-            
+
         }
-        else if(table){
+        else if (table) {
             item = `<div class="simple_carousel_cards in-left">
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
             </div>
@@ -839,7 +815,7 @@ function createSimpleCardsCarousel(cardsData) {
             </p>
             </div>`;
         }
-        else if(metadata.data.length<=2){
+        else if (metadata.data.length <= 2) {
             item = `<div class="simple_carousel_cards in-left">
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
             <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
@@ -851,7 +827,7 @@ function createSimpleCardsCarousel(cardsData) {
             </p>
             </div>`;
         }
-        else{
+        else {
             item = `<div class="simple_carousel_cards in-left">
             <div class="simpleCardHeader"><span class="cardTitle" title="${title}">${title}</span>
             </div>
@@ -878,126 +854,126 @@ function createSimpleCardsCarousel(cardsData) {
 // ===================================== graphCardCarousel =============================================
 
 // Will Draw graph on the cards appended already to carousels.
-function drawCardGraphs(){
+function drawCardGraphs() {
 
-    let expandID = `.expand`;    
-    for(let i=0;i<card_chart_data.length;i++){
+    let expandID = `.expand`;
+    for (let i = 0; i < card_chart_data.length; i++) {
 
-    let cardChartData = card_chart_data[i].data;
-    let canvasID = `card-chat-chart${i}`;
+        let cardChartData = card_chart_data[i].data;
+        let canvasID = `card-chat-chart${i}`;
 
-    //create the context that will draw the charts over the canvas in the ".chart-container" div
-    let ctx = $(`#${canvasID}`);
+        //create the context that will draw the charts over the canvas in the ".chart-container" div
+        let ctx = $(`#${canvasID}`);
 
-    // Once you have the element or context, instantiate the chart-type by passing the configuration,
-    //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
+        // Once you have the element or context, instantiate the chart-type by passing the configuration,
+        //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
         let data;
         let options;
         console.log(cardChartData);
-    if(cardChartData.chartsIntersectData){
-    data = {
-        labels: cardChartData.labels,
-        datasets: [{
-            type:"bar",
-            label: cardChartData.label1,
-            backgroundColor: "red",
-            data: cardChartData.chartsData,
-            id:'y-axis-0',
-            fill: false
-        },
-        {   
-            type:"bar",
-            label: cardChartData.label2,
-            backgroundColor: "blue",
-            data: cardChartData.chartsIntersectData,
-            id:'y-axis-0',
-            fill: false
-        }]
-    };
-    options = {
-        responsive: false,
-        maintainAspectRatio: false,
-        title: {
-            display: true,
-            text: cardChartData.title
-        },
-        tooltips: {
-            mode: 'label'
-        },
-        layout: {
-            padding: {
-                left: 5,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
-        },
-        legend: {
-            display: displayLegend,
-            position: "right",
-            labels: {
-                boxWidth: 5,
-                fontSize: 10
-            }
-        },
-        scales: {
-            xAxes: [{
-              stacked: true
-            }],
-            yAxes: [{
-              stacked: true,
-              position: "left",
-              id: "y-axis-0",
-            }]
-          }
-    }
-    }
-    else{
-        data = {
-            labels: cardChartData.labels,
-            datasets: [{
-                label: cardChartData.label1,
-                backgroundColor: cardChartData.backgroundColor,
-                data: cardChartData.chartsData,
-                fill: false
-            }]
-        };
-        options = {
-            responsive: false,
-            maintainAspectRatio: false,
-            title: {
-                display: true,
-                text: cardChartData.title
-            },
-            layout: {
-                padding: {
-                    left: 5,
-                    right: 0,
-                    top: 0,
-                    bottom: 0
-                }
-            },
-            legend: {
-                display: displayLegend,
-                position: "right",
-                labels: {
-                    boxWidth: 5,
-                    fontSize: 10
+        if (cardChartData.chartsIntersectData) {
+            data = {
+                labels: cardChartData.labels,
+                datasets: [{
+                    type: "bar",
+                    label: cardChartData.label1,
+                    backgroundColor: "red",
+                    data: cardChartData.chartsData,
+                    id: 'y-axis-0',
+                    fill: false
+                },
+                {
+                    type: "bar",
+                    label: cardChartData.label2,
+                    backgroundColor: "blue",
+                    data: cardChartData.chartsIntersectData,
+                    id: 'y-axis-0',
+                    fill: false
+                }]
+            };
+            options = {
+                responsive: false,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: cardChartData.title
+                },
+                tooltips: {
+                    mode: 'label'
+                },
+                layout: {
+                    padding: {
+                        left: 5,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                legend: {
+                    display: displayLegend,
+                    position: "right",
+                    labels: {
+                        boxWidth: 5,
+                        fontSize: 10
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        stacked: true
+                    }],
+                    yAxes: [{
+                        stacked: true,
+                        position: "left",
+                        id: "y-axis-0",
+                    }]
                 }
             }
         }
+        else {
+            data = {
+                labels: cardChartData.labels,
+                datasets: [{
+                    label: cardChartData.label1,
+                    backgroundColor: cardChartData.backgroundColor,
+                    data: cardChartData.chartsData,
+                    fill: false
+                }]
+            };
+            options = {
+                responsive: false,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: cardChartData.title
+                },
+                layout: {
+                    padding: {
+                        left: 5,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                legend: {
+                    display: displayLegend,
+                    position: "right",
+                    labels: {
+                        boxWidth: 5,
+                        fontSize: 10
+                    }
+                }
+            }
+        }
+
+
+        //draw the chart by passing the configuration
+        chatChart = new Chart(ctx, {
+            type: cardChartData.chartType,
+            data: data,
+            options: options
+        });
+
     }
 
-
-    //draw the chart by passing the configuration
-    chatChart = new Chart(ctx, {
-        type: cardChartData.chartType,
-        data: data,
-        options: options
-    });
-
-    }
-    
 }
 
 function showGraphCardsCarousel(cardsToAdd) {
@@ -1009,11 +985,11 @@ function showGraphCardsCarousel(cardsToAdd) {
     // if (cardsToAdd.length <= 2) {
     //     $(".graph_cards_scroller>div.graph_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
     // } else {
-        for (var i = 0; i < cardsToAdd.length; i++) {
-            $(".graph_cards_scroller>div.graph_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
-        }
-        $(".cards .arrow.prev").fadeIn("3000");
-        $(".cards .arrow.next").fadeIn("3000");
+    for (var i = 0; i < cardsToAdd.length; i++) {
+        $(".graph_cards_scroller>div.graph_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
+    }
+    $(".cards .arrow.prev").fadeIn("3000");
+    $(".cards .arrow.next").fadeIn("3000");
     // }
 
 
@@ -1037,25 +1013,25 @@ function showGraphCardsCarousel(cardsToAdd) {
         card_scroller.scrollBy(-card_item_size, 0);
     }
 
-    
-console.log(card_chart_data);
- drawCardGraphs();
+
+    console.log(card_chart_data);
+    drawCardGraphs();
 }
 
 // create a chart canvas html with unique Id and saves in card_chat_data
-function makeChartCanvas(data){
+function makeChartCanvas(data) {
     let uniqueID = card_chart_data.length;
     let expandID = `.expand`;
     let canvasID = `card-chat-chart${uniqueID}`;
     let chartData = {
-        "title":data.title,
-        "label1":data.label1,
-        "label2":data.label2,
-        "labels":data.labels,
-        "backgroundColor":data.backgroundColor,
-        "chartsData":data.chartsData,
-        "chartType":data.chartType,
-        "displayLegend":data.displayLegend,
+        "title": data.title,
+        "label1": data.label1,
+        "label2": data.label2,
+        "labels": data.labels,
+        "backgroundColor": data.backgroundColor,
+        "chartsData": data.chartsData,
+        "chartType": data.chartType,
+        "displayLegend": data.displayLegend,
         "chartsIntersectData": data.chartsIntersectData
     };
     // Add to memory
@@ -1079,7 +1055,7 @@ function createGraphCardsCarousel(cardsData) {
         let title = cardsData[i].title;
         let chartContainer = makeChartCanvas(cardsData[i]);
         let metadata = cardsData[i].metadata;
-        if(metadata){
+        if (metadata) {
             item = `<div class="graph_carousel_cards in-left">
         <div class="graphCardHeader"><span class="cardTitle" title="${title}">${title}</span>
         <span class="modal-trigger-card" data-payload = '${JSON.stringify(metadata)}' id="modalcardexp" title="modalcardexp" href="#modal2">
@@ -1089,7 +1065,7 @@ function createGraphCardsCarousel(cardsData) {
         ${chartContainer}
         </div>`;
         }
-        else{
+        else {
             item = `<div class="graph_carousel_cards in-left">
         <div class="graphCardHeader"><span class="cardTitle" title="${title}">${title}</span>
         </div>
@@ -1150,7 +1126,7 @@ function showQuickReplies(quickRepliesData) {
 }
 
 // on click of quickreplies, get the value and send to rasa
-$(document).on("click", ".quickReplies .chip", function() {
+$(document).on("click", ".quickReplies .chip", function () {
     var text = this.innerText;
     var payload = this.getAttribute('data-payload');
     console.log("chip payload: ", this.getAttribute('data-payload'))
@@ -1249,12 +1225,12 @@ function createCollapsible(data) {
 //====================================== creating Charts ======================================
 
 // function to get the current index of charts_data[]
-function getCurrentChartIndex(){
-    return charts_data.length -1;
+function getCurrentChartIndex() {
+    return charts_data.length - 1;
 }
 
 // function to store the chart_data in the charts_data = []
-function setChartData(id,data){
+function setChartData(id, data) {
     charts_data.push({
         "id": id,
         "data": data
@@ -1262,8 +1238,8 @@ function setChartData(id,data){
 }
 
 // function to get the charts_data by id , returns whole object
-function getChartData(id){
-    return charts_data.find(ele=> ele.id == id);
+function getChartData(id) {
+    return charts_data.find(ele => ele.id == id);
 }
 
 //function to create the charts & render it to the canvas
@@ -1274,19 +1250,19 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
     // making expand{id} as an unique id and chat-chart{id} ids for canvas
 
     // creating unique id
-    let uniqueID = getCurrentChartIndex() +1 ;
+    let uniqueID = getCurrentChartIndex() + 1;
     let expandID = `#expand`;
     let canvasID = `chat-chart${uniqueID}`;
     let chartData = {
-        "title":title,
-        "labels":labels,
-        "backgroundColor":backgroundColor,
-        "chartsData":chartsData,
-        "chartType":chartType,
-        "displayLegend":displayLegend
+        "title": title,
+        "labels": labels,
+        "backgroundColor": backgroundColor,
+        "chartsData": chartsData,
+        "chartType": chartType,
+        "displayLegend": displayLegend
     };
     // Add to memory
-    setChartData(uniqueID,chartData);
+    setChartData(uniqueID, chartData);
     let html = `<div class="chart-container"> <span class="modal-trigger" data-payload = '${JSON.stringify(chartData)}' id="${expandID}" title="${expandID}" href="#modal1">
                 <i class="fa fa-external-link" aria-hidden="true"></i></span>
                 <canvas id="${canvasID}" ></canvas>
@@ -1298,7 +1274,7 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 
     // Once you have the element or context, instantiate the chart-type by passing the configuration,
     //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
-    if(chartsIntersectData){
+    if (chartsIntersectData) {
         var data = {
             labels: labels,
             datasets: [{
@@ -1339,21 +1315,21 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
             },
             scales: {
                 xAxes: [{
-                  stacked: true
+                    stacked: true
                 }],
                 yAxes: [{
-                  stacked: true,
-                  position: "left",
-                  id: "y-axis-0",
+                    stacked: true,
+                    position: "left",
+                    id: "y-axis-0",
                 }, {
-                  stacked: false,
-                  position: "right",
-                  id: "y-axis-1",
+                    stacked: false,
+                    position: "right",
+                    id: "y-axis-1",
                 }]
-              }
+            }
         }
     }
-    else{
+    else {
         var data = {
             labels: labels,
             datasets: [{
@@ -1400,78 +1376,71 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 
 // on click of expand button, get the chart data from gloabl variable & render it to modal
 
-$(document).on("click", ".modal-trigger-card", function() {
+$(document).on("click", ".modal-trigger-card", function () {
     let payload = JSON.parse(this.getAttribute('data-payload'));
     let title = payload.title;
     let data = payload.data;
 
     let html = `<div class="cardpreviewHeader" ><span class="cardpreviewTitle">${title}</span></div>`;
     let eles = "";
-    for(let i=0;i<data.length;i++){
+    for (let i = 0; i < data.length; i++) {
         let ele = data[i];
         eles = eles + `<span class="cardpreviewdata"><div class="cardpreviewtitles">${ele.title}</div><div class="cardpreviewvariables">${ele.value}</div></span>`;
     }
     html = html + eles;
     $('#modal2').html(html);
-    $('#modal2').modal({dismissible:true});
+    $('#modal2').modal({ dismissible: true });
     $('#modal2').modal('open');
-    
+
 });
 
 // on click of expand button, render the table
-$(document).on("click", ".modal-trigger-table", function() {
+$(document).on("click", ".modal-trigger-table", function () {
     let payload = JSON.parse(this.getAttribute('data-payload'));
-    // const html = `
-    // <h1>Table</h1>
-    // <div>val1: asasas</div>
-    // <div>val2: kjkjkjk</div>
-    // <div>val3: aaas</div>
-    // <div>val4: asas</div>
-    // `;
-        
-        //Define Table
-        // layout:fitColumns
-        let columns = payload.columns;
-        let initialSort = payload.initialSort;
-        let tabledata = payload.tableData;
-        const table = new Tabulator("#modal3", {
-            layout:"fitDataStretch",
-            // responsiveLayout:true,
-            tooltips:true,
-            addRowPos:"top",
-            history:true,
-            pagination:"local",
-            paginationSize:5,
-            // paginationSizeSelector:[1,2,3],
-            movableColumns:true,
-            resizableRows:true,
-            data:tabledata,
-            initialSort:initialSort,
-            columns:columns
-        });
+
+    //Define Table
+    // layout:fitColumns
+    let columns = payload.columns;
+    let initialSort = payload.initialSort;
+    let tabledata = payload.tableData;
+    const table = new Tabulator("#modal3", {
+        layout: "fitDataStretch",
+        // responsiveLayout:true,
+        tooltips: true,
+        addRowPos: "top",
+        history: true,
+        pagination: "local",
+        paginationSize: 5,
+        // paginationSizeSelector:[1,2,3],
+        movableColumns: true,
+        resizableRows: true,
+        data: tabledata,
+        initialSort: initialSort,
+        columns: columns
+    });
 
 
-    // $('#modal2').html(html);
-    $('#modal3').modal({dismissible:true});
+
+    $('#modal3').modal({ dismissible: true });
     $('#modal3').modal('open');
-    let tableheadercss= {backgroundColor:"rgb(44, 83, 175)"};
-  $('.tabulator .tabulator-header .tabulator-headers .tabulator-col .tabulator-col-content').css(tableheadercss);
-  $('.tabulator-headers').css(tableheadercss);
-  $('.tabulator-col-title').css('color','white');
-  $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title').show();    
+    let tableheadercss = { backgroundColor: "rgb(44, 83, 175)" };
+    $('.tabulator .tabulator-header .tabulator-headers .tabulator-col .tabulator-col-content').css(tableheadercss);
+    $('.tabulator-headers').css(tableheadercss);
+    $('.tabulator-col-title').css('color', 'white');
+    $('.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title').show();
 });
 
 
 // on click of expand button, get the chart data from gloabl variable & render it to modal
 
-$(document).on("click", ".modal-trigger", function() {
+$(document).on("click", ".modal-trigger", function () {
     let payload = JSON.parse(this.getAttribute('data-payload'));
     payload.titles = {
-        label1:payload.label1,
-        label2:payload.label2
+        label1: payload.label1,
+        label2: payload.label2
     };
-    createChartinModal(payload.title, payload.titles, payload.labels, payload.backgroundColor, payload.chartsData,payload.chartType, payload.displayLegend, payload.chartsIntersectData)
-});    
+    createChartinModal(payload.title, payload.titles, payload.labels, payload.backgroundColor, payload.chartsData, payload.chartType, payload.displayLegend, payload.chartsIntersectData)
+});
 
 
 
@@ -1480,11 +1449,11 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
 
     var ctx = $('#modal-chart');
 
-    if(chartsIntersectData){
+    if (chartsIntersectData) {
         var data = {
             labels: labels,
             datasets: [{
-                type:"bar",
+                type: "bar",
                 label: titles.label1,
                 backgroundColor: "red",
                 data: chartsData,
@@ -1492,7 +1461,7 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
                 fill: false
             },
             {
-                type:"bar",
+                type: "bar",
                 label: titles.label2,
                 backgroundColor: "blue",
                 data: chartsIntersectData,
@@ -1507,7 +1476,7 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
             },
             tooltips: {
                 mode: 'label'
-              },
+            },
             layout: {
                 padding: {
                     left: 5,
@@ -1526,17 +1495,17 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
             },
             scales: {
                 xAxes: [{
-                  stacked: false
+                    stacked: false
                 }],
                 yAxes: [{
-                  stacked: false,
-                  position: "left",
-                  id: "y-axis-0",
+                    stacked: false,
+                    position: "left",
+                    id: "y-axis-0",
                 }]
-              }
+            }
         }
     }
-    else{
+    else {
         var data = {
             labels: labels,
             datasets: [{
@@ -1553,7 +1522,7 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
             },
             tooltips: {
                 mode: 'label'
-              },
+            },
             layout: {
                 padding: {
                     left: 5,
@@ -1587,7 +1556,7 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
 // ========================================loginForm===============================================
 
 
-function login(){
+function login() {
     let email = $("input[name='email']").val();
     let password = $("input[name='password']").val();
     // console.log(password);
@@ -1596,29 +1565,29 @@ function login(){
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ email: email, password: password }),
-        success: function(response, status) {
+        success: function (response, status) {
             console.log("Response from server: ", response, "\nStatus: ", status);
             // remove loginform html from chats
-            $(".chats").fadeOut("normal", function() {
+            $(".chats").fadeOut("normal", function () {
                 $(".chats").html("");
                 $(".chats").fadeIn();
             });
             send("/greetings.welcome");
         },
-        error: function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
             // display error in ui
             // if there is no response from rasa server
             console.log("Error from bot end: ", textStatus);
         }
-    });    
+    });
 
 }
 
-function loginForm(){
+function loginForm() {
 
 
-setTimeout(()=>{
-  const html = `
+    setTimeout(() => {
+        const html = `
         <div class="container mainform">
         <div class="row">
             <div class="col m12 center-align m2">
@@ -1640,12 +1609,12 @@ setTimeout(()=>{
         </div>
         </div>
         </div>`;
-        $(".chats").fadeOut("normal", function() {
-        $(".chats").html(html);
-        $(".chats").fadeIn();
-    });
+        $(".chats").fadeOut("normal", function () {
+            $(".chats").html(html);
+            $(".chats").fadeIn();
+        });
         // $(".chats").show();
-},1000);
+    }, 1000);
 
-      
+
 }

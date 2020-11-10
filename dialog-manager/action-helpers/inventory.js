@@ -337,7 +337,7 @@ module.exports.costgoods = async (data, token) => {
   return buildResponse({ cards: cards });
 };
 
-module.exports.foodcosts = async (data, token) => {
+module.exports.foodcost = async (data, token) => {
   const URL = BASE_URL + "/api/v1/inventory/food-cost";
   const resp = await axios.post(URL, data, {
     headers: {
@@ -431,7 +431,7 @@ module.exports.marginitems = async (data, token) => {
     obj.metadata = {};
     obj.table.tableData = [];
     outlet.dishes.forEach((dish) => {
-      dish.order_type.forEach(otype => {
+      dish.ordertype.forEach(otype => {
         obj.table.tableData.push({
           id: id,
           name: dish.dish_name,
@@ -495,7 +495,7 @@ module.exports.lossitems = async (data, token) => {
     obj.metadata = {};
     obj.table.tableData = [];
     outlet.dishes.forEach((dish) => {
-      dish.order_type.forEach(otype => {
+      dish.ordertype.forEach(otype => {
         obj.table.tableData.push({
           id: id,
           name: dish.dish_name,
