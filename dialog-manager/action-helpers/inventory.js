@@ -413,3 +413,145 @@ module.exports.foodcosts = async (data, token) => {
 
   return buildResponse({ cards: cards });
 };
+
+module.exports.marginitems = async (data, token) => {
+  const URL = BASE_URL + "/api/v1/inventory/high-low-margins";
+  const resp = await axios.post(URL, data, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  let result = resp.data.result;
+  let cards = [];
+  let id = 0;
+  result.forEach((outlet) => {
+    let obj = {};
+    obj.table = {};
+    obj.metadata = {};
+    obj.table.tableData = [];
+    outlet.dishes.forEach((dish) => {
+      dish.order_type.forEach(otype => {
+        obj.table.tableData.push({
+          id: id,
+          name: dish.dish_name,
+          category: dish.category_name,
+          order_type:otype.order_type,
+          amount:otype.amount
+        });        
+      });
+    });
+    obj.table.columns = [
+      {
+        title: "Name",
+        field: "name",
+      },
+      {
+        title: "Category",
+        field: "category",
+      },
+      {
+        title: "Order Type",
+        field: "order_type",
+      },
+      {
+        title: "Amount",
+        field: "amount",
+      }
+    ];
+    obj.table.initialSort = [{ column: "name", dir: "asc" }];
+    obj.metadata.title = outlet.outletname;
+    obj.metadata.data = [
+      {
+        title: "From",
+        value: data.from,
+      },
+      {
+        title: "To",
+        value: data.to,
+      },
+    ];
+    cards.push(obj);
+    id++;
+  });
+
+  return buildResponse({ cards: cards });
+};
+
+module.exports.foodcosts = async (data, token) => {
+  const URL = BASE_URL + "/api/v1/inventory/food-cost";
+  const resp = await axios.post(URL, data, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  let result = resp.data.result;
+  let cards = [];
+  let id = 0;
+  result.forEach((outlet) => {
+    let obj = {};
+    obj.table = {};
+    obj.metadata = {};
+    obj.table.tableData = [];
+    outlet.dishes.forEach((dish) => {
+      obj.table.tableData.push({
+        id: id,
+        name: dish.dish_name,
+        category: dish.category_name,
+        cost: dish.cost,
+        dish_sold: dish.dish_sold,
+        average_dish_selling_price: dish.average_dish_selling_price,
+        food_cost: dish.food_cost,
+        wastage_amount: dish.wastage_amount,
+      });
+    });
+    obj.table.columns = [
+      {
+        title: "Name",
+        field: "name",
+      },
+      {
+        title: "Category",
+        field: "category",
+      },
+      {
+        title: "Cost",
+        field: "cost",
+      },
+      {
+        title: "Dish Sold",
+        field: "dish_sold",
+      },
+      {
+        title: "Avg. S.P",
+        field: "average_dish_selling_price",
+      },
+      {
+        title: "Food cost",
+        field: "food_cost",
+      },
+      {
+        title: "Wastage Amt.",
+        field: "wastage_amount",
+      },
+    ];
+    obj.table.initialSort = [{ column: "name", dir: "asc" }];
+    obj.metadata.title = outlet.outletname;
+    obj.metadata.data = [
+      {
+        title: "From",
+        value: data.from,
+      },
+      {
+        title: "To",
+        value: data.to,
+      },
+    ];
+    cards.push(obj);
+    id++;
+  });
+
+  return buildResponse({ cards: cards });
+};
+

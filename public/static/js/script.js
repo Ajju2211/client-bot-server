@@ -228,6 +228,9 @@ setUserResponse("hi");
                     {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
                     {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
                 },
+                "label1":"Label1.",
+                "label2":"Label2.",
+                "chartsIntersectData":[2, 4, 12, 9],
          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
                 },
                 {
@@ -890,6 +893,7 @@ function drawCardGraphs(){
     //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
         let data;
         let options;
+        console.log(cardChartData);
     if(cardChartData.chartsIntersectData){
     data = {
         labels: cardChartData.labels,
@@ -916,6 +920,9 @@ function drawCardGraphs(){
         title: {
             display: true,
             text: cardChartData.title
+        },
+        tooltips: {
+            mode: 'label'
         },
         layout: {
             padding: {
@@ -1032,7 +1039,7 @@ function showGraphCardsCarousel(cardsToAdd) {
 
     
 console.log(card_chart_data);
- drawCardGraphs();    
+ drawCardGraphs();
 }
 
 // create a chart canvas html with unique Id and saves in card_chat_data
@@ -1042,6 +1049,8 @@ function makeChartCanvas(data){
     let canvasID = `card-chat-chart${uniqueID}`;
     let chartData = {
         "title":data.title,
+        "label1":data.label1,
+        "label2":data.label2,
         "labels":data.labels,
         "backgroundColor":data.backgroundColor,
         "chartsData":data.chartsData,
@@ -1456,8 +1465,6 @@ $(document).on("click", ".modal-trigger-table", function() {
 // on click of expand button, get the chart data from gloabl variable & render it to modal
 
 $(document).on("click", ".modal-trigger", function() {
-    //the parameters are declared gloabally while we get the charts data from rasa.
-    // let data = getChartData(i);
     let payload = JSON.parse(this.getAttribute('data-payload'));
     payload.titles = {
         label1:payload.label1,
@@ -1470,18 +1477,15 @@ $(document).on("click", ".modal-trigger", function() {
 
 //function to render the charts in the modal
 function createChartinModal(chartName, titles, labels, backgroundColor, chartsData, chartType, displayLegend, chartsIntersectData) {
-    //if you want to display the charts in modal, make sure you have configured the modal in index.html
-    //create the context that will draw the charts over the canvas in the "#modal-chart" div of the modal
+
     var ctx = $('#modal-chart');
 
-    // Once you have the element or context, instantiate the chart-type by passing the configuration,
-    //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
     if(chartsIntersectData){
         var data = {
             labels: labels,
             datasets: [{
                 type:"bar",
-                label: "title.label1",
+                label: titles.label1,
                 backgroundColor: "red",
                 data: chartsData,
                 id: "y-axis-0",
@@ -1489,7 +1493,7 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
             },
             {
                 type:"bar",
-                label: "title.label2",
+                label: titles.label2,
                 backgroundColor: "blue",
                 data: chartsIntersectData,
                 id: "y-axis-0",
