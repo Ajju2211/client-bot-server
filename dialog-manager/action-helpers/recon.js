@@ -57,6 +57,7 @@ module.exports.cancellations = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
+      label1:"Cancellations",
       labels: labels,
       chartsData: chartData,
       backgroundColor: generateBackgroundColors(chartData.length),
@@ -93,6 +94,8 @@ module.exports.cdreport = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
+      label1:"Deposited",
+      label2:"Amt",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,
@@ -130,6 +133,8 @@ module.exports.edcreport = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
+      label1:"Amt",
+      label2:"AmtCredited",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,
@@ -167,6 +172,8 @@ module.exports.expensetab = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
+      label1:"Sales",
+      label2:"AmtCredited",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,
@@ -204,6 +211,8 @@ module.exports.pendingpayouts = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
+      label1:"PendingAmt",
+      label2:"Amt",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,

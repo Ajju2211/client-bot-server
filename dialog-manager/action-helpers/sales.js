@@ -72,6 +72,8 @@ module.exports.topitems = async (data, token) => {
         });
         cardWithGraph.push({
             title:outlet.outletname,
+            label1:"Amount",
+            label2:"Qty",
             labels:labels,
             chartsData:chartData,
             chartsIntersectData:chartIntersectData,
@@ -116,6 +118,8 @@ module.exports.topcategories = async (data, token) => {
         });
         cardWithGraph.push({
             title:outlet.outletname,
+            label1:"Amount",
+            label2:"Qty",
             labels:labels,
             chartsData:chartData,
             chartsIntersectData:chartIntersectData,
@@ -160,6 +164,8 @@ module.exports.topordertypes = async (data, token) => {
         });
         cardWithGraph.push({
             title:outlet.outletname,
+            label1:"Amount",
+            label2:"Qty",
             labels:labels,
             chartsData:chartData,
             chartsIntersectData:chartIntersectData,

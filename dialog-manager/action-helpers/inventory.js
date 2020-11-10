@@ -44,6 +44,8 @@ module.exports.pendingpurchases = async (data, token) => {
     });
     cardWithGraph.push({
       metadata: metadata,
+      label1:"RequestedQty",
+      label2:"PendingQty",
       title: outlet.outletname,
       labels: labels,
       chartsData: chartData,
@@ -78,6 +80,7 @@ module.exports.pendingvendorpayments = async (data, token) => {
       chartData.push(item.amount);
     });
     cardWithGraph.push({
+      label1:"Amount",
       title: outlet.outletname,
       labels: labels,
       chartsData: chartData,
@@ -131,6 +134,8 @@ module.exports.pendingindents = async (data, token) => {
       chartIntersectData.push(item.pending_quantity);
     });
     cardWithGraph.push({
+      label1:"RequestedQty",
+      label2:"PendingQty",
       metadata: metadata,
       title: outlet.outletname,
       labels: labels,
@@ -165,6 +170,7 @@ module.exports.pendingphysicalchecks = async (data, token) => {
       chartData.push(item.physical_check_date);
     });
     cardWithGraph.push({
+      label1:"Phy.Check.Date",
       title: outlet.outletname,
       labels: labels,
       chartsData: chartData,
@@ -198,6 +204,7 @@ module.exports.pendingproductions = async (data, token) => {
       chartData.push(item.physical_check_date);
     });
     cardWithGraph.push({
+      label1:"Phy.Check.Date",
       title: outlet.outletname,
       labels: labels,
       chartsData: chartData,

@@ -888,16 +888,29 @@ function drawCardGraphs(){
 
     // Once you have the element or context, instantiate the chart-type by passing the configuration,
     //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
-    let data = {
+        let data;
+        let options;
+    if(cardChartData.chartsIntersectData){
+    data = {
         labels: cardChartData.labels,
         datasets: [{
-            label: cardChartData.title,
-            backgroundColor: cardChartData.backgroundColor,
+            type:"bar",
+            label: cardChartData.label1,
+            backgroundColor: "red",
             data: cardChartData.chartsData,
+            id:'y-axis-0',
+            fill: false
+        },
+        {   
+            type:"bar",
+            label: cardChartData.label2,
+            backgroundColor: "blue",
+            data: cardChartData.chartsIntersectData,
+            id:'y-axis-0',
             fill: false
         }]
     };
-    let options = {
+    options = {
         responsive: false,
         maintainAspectRatio: false,
         title: {
@@ -919,8 +932,55 @@ function drawCardGraphs(){
                 boxWidth: 5,
                 fontSize: 10
             }
+        },
+        scales: {
+            xAxes: [{
+              stacked: true
+            }],
+            yAxes: [{
+              stacked: true,
+              position: "left",
+              id: "y-axis-0",
+            }]
+          }
+    }
+    }
+    else{
+        data = {
+            labels: cardChartData.labels,
+            datasets: [{
+                label: cardChartData.label1,
+                backgroundColor: cardChartData.backgroundColor,
+                data: cardChartData.chartsData,
+                fill: false
+            }]
+        };
+        options = {
+            responsive: false,
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: cardChartData.title
+            },
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            legend: {
+                display: displayLegend,
+                position: "right",
+                labels: {
+                    boxWidth: 5,
+                    fontSize: 10
+                }
+            }
         }
     }
+
 
     //draw the chart by passing the configuration
     chatChart = new Chart(ctx, {
@@ -986,7 +1046,8 @@ function makeChartCanvas(data){
         "backgroundColor":data.backgroundColor,
         "chartsData":data.chartsData,
         "chartType":data.chartType,
-        "displayLegend":data.displayLegend
+        "displayLegend":data.displayLegend,
+        "chartsIntersectData": data.chartsIntersectData
     };
     // Add to memory
     card_chart_data.push({
@@ -1197,7 +1258,7 @@ function getChartData(id){
 }
 
 //function to create the charts & render it to the canvas
-function createChart(title, labels, backgroundColor, chartsData, chartType, displayLegend) {
+function createChart(title, labels, backgroundColor, chartsData, chartType, displayLegend, chartsIntersectData) {
 
     //create the ".chart-container" div that will render the charts in canvas as required by charts.js,
     // for more info. refer: https://www.chartjs.org/docs/latest/getting-started/usage.html
@@ -1228,37 +1289,95 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
 
     // Once you have the element or context, instantiate the chart-type by passing the configuration,
     //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
-    var data = {
-        labels: labels,
-        datasets: [{
-            label: title,
-            backgroundColor: backgroundColor,
-            data: chartsData,
-            fill: false
-        }]
-    };
-    var options = {
-        title: {
-            display: true,
-            text: title
-        },
-        layout: {
-            padding: {
-                left: 5,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
-        },
-        legend: {
-            display: displayLegend,
-            position: "right",
-            labels: {
-                boxWidth: 5,
-                fontSize: 10
+    if(chartsIntersectData){
+        var data = {
+            labels: labels,
+            datasets: [{
+                label: title,
+                backgroundColor: backgroundColor,
+                data: chartsData,
+                id: "y-axis-0",
+                fill: false
+            },
+            {
+                label: title,
+                backgroundColor: backgroundColor,
+                data: chartsIntersectData,
+                id: "y-axis-1",
+                fill: false
+            }]
+        };
+        var options = {
+            title: {
+                display: true,
+                text: title
+            },
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            legend: {
+                display: displayLegend,
+                position: "right",
+                labels: {
+                    boxWidth: 5,
+                    fontSize: 10
+                }
+            },
+            scales: {
+                xAxes: [{
+                  stacked: true
+                }],
+                yAxes: [{
+                  stacked: true,
+                  position: "left",
+                  id: "y-axis-0",
+                }, {
+                  stacked: false,
+                  position: "right",
+                  id: "y-axis-1",
+                }]
+              }
+        }
+    }
+    else{
+        var data = {
+            labels: labels,
+            datasets: [{
+                label: title,
+                backgroundColor: backgroundColor,
+                data: chartsData,
+                fill: false
+            }]
+        };
+        var options = {
+            title: {
+                display: true,
+                text: title
+            },
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            legend: {
+                display: displayLegend,
+                position: "right",
+                labels: {
+                    boxWidth: 5,
+                    fontSize: 10
+                }
             }
         }
     }
+
 
     //draw the chart by passing the configuration
     chatChart = new Chart(ctx, {
@@ -1340,47 +1459,116 @@ $(document).on("click", ".modal-trigger", function() {
     //the parameters are declared gloabally while we get the charts data from rasa.
     // let data = getChartData(i);
     let payload = JSON.parse(this.getAttribute('data-payload'));
-    createChartinModal(payload.title, payload.labels, payload.backgroundColor, payload.chartsData,payload.chartType, payload.displayLegend)
+    payload.titles = {
+        label1:payload.label1,
+        label2:payload.label2
+    };
+    createChartinModal(payload.title, payload.titles, payload.labels, payload.backgroundColor, payload.chartsData,payload.chartType, payload.displayLegend, payload.chartsIntersectData)
 });    
 
 
 
 //function to render the charts in the modal
-function createChartinModal(title, labels, backgroundColor, chartsData, chartType, displayLegend) {
+function createChartinModal(chartName, titles, labels, backgroundColor, chartsData, chartType, displayLegend, chartsIntersectData) {
     //if you want to display the charts in modal, make sure you have configured the modal in index.html
     //create the context that will draw the charts over the canvas in the "#modal-chart" div of the modal
     var ctx = $('#modal-chart');
 
     // Once you have the element or context, instantiate the chart-type by passing the configuration,
     //for more info. refer: https://www.chartjs.org/docs/latest/configuration/
-    var data = {
-        labels: labels,
-        datasets: [{
-            label: title,
-            backgroundColor: backgroundColor,
-            data: chartsData,
-            fill: false
-        }]
-    };
-    var options = {
-        title: {
-            display: true,
-            text: title
-        },
-        layout: {
-            padding: {
-                left: 5,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
-        },
-        legend: {
-            display: displayLegend,
-            position: "right"
-        },
-
+    if(chartsIntersectData){
+        var data = {
+            labels: labels,
+            datasets: [{
+                type:"bar",
+                label: "title.label1",
+                backgroundColor: "red",
+                data: chartsData,
+                id: "y-axis-0",
+                fill: false
+            },
+            {
+                type:"bar",
+                label: "title.label2",
+                backgroundColor: "blue",
+                data: chartsIntersectData,
+                id: "y-axis-0",
+                fill: false
+            }]
+        };
+        var options = {
+            title: {
+                display: true,
+                text: title
+            },
+            tooltips: {
+                mode: 'label'
+              },
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            legend: {
+                display: displayLegend,
+                position: "right",
+                labels: {
+                    boxWidth: 5,
+                    fontSize: 10
+                }
+            },
+            scales: {
+                xAxes: [{
+                  stacked: false
+                }],
+                yAxes: [{
+                  stacked: false,
+                  position: "left",
+                  id: "y-axis-0",
+                }]
+              }
+        }
     }
+    else{
+        var data = {
+            labels: labels,
+            datasets: [{
+                label: titles.label1,
+                backgroundColor: backgroundColor,
+                data: chartsData,
+                fill: false
+            }]
+        };
+        var options = {
+            title: {
+                display: true,
+                text: chartName
+            },
+            tooltips: {
+                mode: 'label'
+              },
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            legend: {
+                display: displayLegend,
+                position: "right",
+                labels: {
+                    boxWidth: 5,
+                    fontSize: 10
+                }
+            }
+        }
+    }
+
 
     modalChart = new Chart(ctx, {
         type: chartType,
