@@ -1557,9 +1557,12 @@ function createChartinModal(chartName, titles, labels, backgroundColor, chartsDa
 
 
 function login() {
-    let email = $("input[name='email']").val();
-    let password = $("input[name='password']").val();
-    // console.log(password);
+    let email = $("input[name='email']").val().trim();
+    let password = $("input[name='password']").val().trim();
+    if(email.length < 1 || password.length < 1){
+        return;
+    }
+    
     $.ajax({
         url: "/user/login",
         type: "POST",
@@ -1578,7 +1581,7 @@ function login() {
             // display error in ui
             // if there is no response from rasa server
             $('#login-error').html("Invalid email,password");
-            $('#login-error').show();
+            $('.warning-message').show();
             console.log("Error from bot end: ", textStatus);
         }
     });
@@ -1597,7 +1600,8 @@ function loginForm() {
             </div>
         </div>
         <div class="row ">
-            <div class="warning-message" id="login-error" style="display:none"></div>
+            <div class="warning-message"  style="display:none"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><span id="login-error" style="padding-left:13%"></span>
+            </div>
             <div class="col m12 input-field sform">
                     <input  type="email" class="validate" style="border:none;border-bottom:none;outline:none"  name="email" placeholder="Email">
             </div>
