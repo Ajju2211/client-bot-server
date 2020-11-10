@@ -422,11 +422,11 @@ module.exports = {
         },
         {
           title: "Cost of goods",
-          payload: "/main.inventory.pendingpayouts",
+          payload: "/main.inventory.costgoods",
         },
         {
           title: "Food cost",
-          payload: "/main.inventory.costgoods",
+          payload: "/main.inventory.foodcost",
         },
         {
           title: "High/Low Margin Items",

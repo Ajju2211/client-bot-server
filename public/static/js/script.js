@@ -831,8 +831,8 @@ function createSimpleCardsCarousel(cardsData) {
             <p>
             <span class="modal-trigger-table" data-payload = '${JSON.stringify(table)}' id="modaltableexp" title="Table" href="#modal3">
             <i class="fa fa-external-link" style="margin-top:40px;" aria-hidden="true"></i></span>
-            <span class="simpleCardCounts">Bill counts:<br><span class="countamount">${ele1.value}</span></span>
-            <span class="simpleCardAmount">Total amount:<br><span class="countamount">₹${ele2.value}</span></span>
+            <span class="simpleCardCounts">${ele1.title}:<br><span class="countamount">${ele1.value}</span></span>
+            <span class="simpleCardAmount">${ele2.title}:<br><span class="countamount">${ele2.value}</span></span>
             </p>
             </div>`;
         }
@@ -843,8 +843,8 @@ function createSimpleCardsCarousel(cardsData) {
             <i class="fa fa-eye"  aria-hidden="true"></i></span>
             </div>
             <p>
-            <span class="simpleCardCounts">Bill counts:<br><span class="countamount">${ele1.value}</span></span>
-            <span class="simpleCardAmount">Total amount:<br><span class="countamount">₹${ele2.value}</span></span>
+            <span class="simpleCardCounts">${ele1.title}:<br><span class="countamount">${ele1.value}</span></span>
+            <span class="simpleCardAmount">${ele2.title}:<br><span class="countamount">${ele2.value}</span></span>
             </p>
             </div>`;
         }
@@ -854,7 +854,7 @@ function createSimpleCardsCarousel(cardsData) {
             </div>
             <p>
             <span class="simpleCardCounts">${ele1.title}:<br><span class="countamount">${ele1.value}</span></span>
-            <span class="simpleCardAmount">${ele2.title}:<br><span class="countamount">₹${ele2.value}</span></span>
+            <span class="simpleCardAmount">${ele2.title}:<br><span class="countamount">${ele2.value}</span></span>
             </p>
             </div>`;
         }
