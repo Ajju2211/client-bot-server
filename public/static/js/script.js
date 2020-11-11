@@ -961,7 +961,7 @@ function drawCardGraphs() {
                     }
                 },
                 legend: {
-                    display: displayLegend,
+                    display: cardChartData.displayLegend,
                     position: "right",
                     labels: {
                         boxWidth: 5,
