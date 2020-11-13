@@ -1,9 +1,5 @@
 //Bot pop-up intro
 document.addEventListener('DOMContentLoaded', function () {
-    // var options = {dismissible:true};
-    // var Modalelems = document.querySelectorAll('.modal');
-    // var modalinstances = M.Modal.init(Modalelems, options);
-    // modalinstances.open();
 
     var elemsTap = document.querySelector('.tap-target');
     var instancesTap = M.TapTarget.init(elemsTap, {});
@@ -37,6 +33,7 @@ $(document).ready(function () {
 
     //global variables
     action_name = "/greetings.welcome";
+    // currently not neccesary, if require better use cookie
     user_id = "userid_unique";
 
     $("#userInput").prop('disabled', true);
@@ -354,11 +351,13 @@ function scrollToBottomOfResults() {
 //============== send the user message to rasa server =============================================
 function send(message) {
     // Destroy modal and charts and cards if opened
+    // Destroy others
     $(".chart-container").remove();
     $(".chart-container1").remove();
     if (typeof modalChart !== 'undefined') { modalChart.destroy(); }
     $("#paginated_cards").remove();
-    
+    $(".quickReplies").remove();
+
     $.ajax({
         url: "/user/bot/webhook",
         type: "POST",
@@ -511,7 +510,7 @@ function setBotResponse(response) {
                         // return;
                     }
 
-                    //check if the custom payload type is "cardsCarousel"
+                    //check if the custom payload type is "graphCardsCarousel"
                     if (response[i].custom.payload == "graphCardsCarousel") {
                         let resData = (response[i].custom.outlets)
                         // first make global data empty
@@ -726,18 +725,6 @@ function createCardsCarousel(cardsData) {
         // dummy value
         ratings = Math.round((4 / 5) * 100) + "%";
         data = cardsData[i];
-        // sample format of the charts data:
-        // var chartData = { "title": "Leaves", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "pie", "displayLegend": "true" }
-
-        //store the below parameters as global variable, 
-        // so that it can be used while displaying the charts in modal.
-        //   chartData = (response[i].custom.data) //no need
-        // title = chartData.title;
-        // labels = chartData.labels;
-        // backgroundColor = chartData.backgroundColor;
-        // chartsData = chartData.chartsData;
-        // chartType = chartData.chartType;
-        // displayLegend = chartData.displayLegend;
 
         item = '<div class="carousel_cards in-left">' + '<img class="cardBackgroundImage" src="' + cardsData[i].image + '"><div class="cardFooter">' + '<span class="cardTitle" title="' + title + '">' + title + "</span> " + '<div class="cardDescription">' + '<div class="stars-outer">' + '<div class="stars-inner" style="width:' + ratings + '" ></div>' + "</div>" + "</div>" + "</div>" + "</div>";
         // chart=createChart(title, labels, backgroundColor, chartsData, chartType, displayLegend);
@@ -759,16 +746,12 @@ function showSimpleCardsCarousel(cardsToAdd) {
     $(cards).appendTo(".chats").show();
 
 
-    // if (cardsToAdd.length <= 2) {
-    //     $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
-    // } else {
+
     for (var i = 0; i < cardsToAdd.length; i++) {
         $(".simple_cards_scroller>div.simple_carousel_cards:nth-of-type(" + i + ")").fadeIn(3000);
     }
     $(".cards .arrow.prev").fadeIn("3000");
     $(".cards .arrow.next").fadeIn("3000");
-    // }
-
 
     scrollToBottomOfResults();
 
@@ -1393,7 +1376,7 @@ function createChart(title, labels, backgroundColor, chartsData, chartType, disp
     scrollToBottomOfResults();
 }
 
-// on click of expand button, get the chart data from gloabl variable & render it to modal
+// on click of expand button, get the chart data from data-payload & render it to modal
 
 $(document).on("click", ".modal-trigger-card", function () {
     let payload = JSON.parse(this.getAttribute('data-payload'));
@@ -1418,7 +1401,6 @@ $(document).on("click", ".modal-trigger-table", function () {
     let payload = JSON.parse(this.getAttribute('data-payload'));
 
     //Define Table
-    // layout:fitColumns
     let columns = payload.columns;
     let initialSort = payload.initialSort;
     let tabledata = payload.tableData;
@@ -1450,7 +1432,7 @@ $(document).on("click", ".modal-trigger-table", function () {
 });
 
 
-// on click of expand button, get the chart data from gloabl variable & render it to modal
+// on click of expand button, get the chart data from data-payload & render it to modal
 
 $(document).on("click", ".modal-trigger", function () {
     let payload = JSON.parse(this.getAttribute('data-payload'));

@@ -899,7 +899,8 @@ For Simple Cards
 .quickReplies {
     padding: 5px;
     position: relative;
-    width: 100%;
+    /* width: 100%; */
+    width: calc(100% - 25px);
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -910,6 +911,8 @@ For Simple Cards
     cursor: pointer;
     scroll-behavior: smooth;
     grid-template-columns: 50%;
+    /* Adjusting left gap */
+    left: 25px;
 }
 
 .quickReplies::-webkit-scrollbar {

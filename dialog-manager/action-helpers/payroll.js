@@ -2,6 +2,20 @@ const axios = require("axios");
 const BASE_URL = "http://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys, generateBackgroundColors } = require("../../utils");
+const quickReplies = [
+  {
+      title:"Back",
+      payload:"/main.payroll"
+  },
+  {
+    title:"Sub Menu",
+    payload:"/main.payroll"
+},
+{
+  title:"Main Menu",
+  payload:"/greetings.welcome"
+},
+];
 module.exports.absentees = async (data, token) => {
   const URL = BASE_URL + "/api/v1/payroll/absentees";
   const resp = await axios.post(URL, data, {
@@ -52,8 +66,11 @@ module.exports.absentees = async (data, token) => {
     cards.push(obj);
     id++;
   });
-
-  return buildResponse({ cards: cards });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".absentees";
+  return buildResponse({ cards: cards }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 
@@ -101,8 +118,11 @@ module.exports.avg_working_hrs = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".avg_working_hrs";
+  return buildResponse({ chartCards: cardWithGraph }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.avg_costing = async (data, token) => {
@@ -148,6 +168,9 @@ module.exports.avg_costing = async (data, token) => {
         displayLegend: DIPLAYLEGEND,
       });
     });
-  
-    return buildResponse({ chartCards: cardWithGraph });
+    let quickReplies1 = quickReplies;
+    quickReplies1[0].payload = quickReplies1[0].payload+".avg_costing";
+    return buildResponse({ chartCards: cardWithGraph }).concat(buildResponse({
+      quickReplies: quickReplies1
+    }));
   };

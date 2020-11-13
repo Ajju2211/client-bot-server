@@ -2,6 +2,20 @@ const axios = require("axios");
 const BASE_URL = "http://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys, generateBackgroundColors } = require("../../utils");
+const quickReplies = [
+  {
+    title: "Back",
+    payload: "/main.recon",
+  },
+  {
+    title: "Sub Menu",
+    payload: "/main.recon",
+  },
+  {
+    title: "Main Menu",
+    payload: "/greetings.welcome",
+  },
+];
 module.exports.variance = async (data, token) => {
   const URL = BASE_URL + "/api/v1/reconciliation/variance";
   const resp = await axios.post(URL, data, {
@@ -31,8 +45,13 @@ module.exports.variance = async (data, token) => {
     ];
     cards.push(obj);
   });
-
-  return buildResponse({ cards: cards });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload + ".variance";
+  return buildResponse({ cards: cards }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };
 
 module.exports.cancellations = async (data, token) => {
@@ -57,7 +76,7 @@ module.exports.cancellations = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
-      label1:"Cancellations",
+      label1: "Cancellations",
       labels: labels,
       chartsData: chartData,
       backgroundColor: generateBackgroundColors(chartData.length),
@@ -65,8 +84,13 @@ module.exports.cancellations = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload + ".cancellations";
+  return buildResponse({ chartCards: cardWithGraph }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };
 
 module.exports.cdreport = async (data, token) => {
@@ -94,8 +118,8 @@ module.exports.cdreport = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
-      label1:"Deposited",
-      label2:"Amt",
+      label1: "Deposited",
+      label2: "Amt",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,
@@ -104,8 +128,13 @@ module.exports.cdreport = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload + ".cdreport";
+  return buildResponse({ chartCards: cardWithGraph }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };
 
 module.exports.edcreport = async (data, token) => {
@@ -133,8 +162,8 @@ module.exports.edcreport = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
-      label1:"Amt",
-      label2:"AmtCredited",
+      label1: "Amt",
+      label2: "AmtCredited",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,
@@ -143,8 +172,13 @@ module.exports.edcreport = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload + ".edcreport";
+  return buildResponse({ chartCards: cardWithGraph }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };
 
 module.exports.expensetab = async (data, token) => {
@@ -172,8 +206,8 @@ module.exports.expensetab = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
-      label1:"Sales",
-      label2:"AmtCredited",
+      label1: "Sales",
+      label2: "AmtCredited",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,
@@ -182,8 +216,13 @@ module.exports.expensetab = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload + ".expensetab";
+  return buildResponse({ chartCards: cardWithGraph }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };
 
 module.exports.pendingpayouts = async (data, token) => {
@@ -211,8 +250,8 @@ module.exports.pendingpayouts = async (data, token) => {
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
-      label1:"PendingAmt",
-      label2:"Amt",
+      label1: "PendingAmt",
+      label2: "Amt",
       labels: labels,
       chartsData: chartData,
       chartsIntersectData: chartIntersectData,
@@ -221,6 +260,11 @@ module.exports.pendingpayouts = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-
-  return buildResponse({ chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload + ".pendingpayouts";
+  return buildResponse({ chartCards: cardWithGraph }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };

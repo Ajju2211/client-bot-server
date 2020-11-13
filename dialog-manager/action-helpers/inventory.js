@@ -2,7 +2,20 @@ const axios = require("axios");
 const BASE_URL = "http://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys, generateBackgroundColors } = require("../../utils");
-
+const quickReplies = [
+  {
+      title:"Back",
+      payload:"/main.inventory"
+  },
+  {
+    title:"Sub Menu",
+    payload:"/main.inventory"
+},
+{
+  title:"Main Menu",
+  payload:"/greetings.welcome"
+},
+];
 
 module.exports.pendingpurchases = async (data, token) => {
   const URL = BASE_URL + "/api/v1/inventory/pending-purchases";
@@ -61,7 +74,12 @@ module.exports.pendingpurchases = async (data, token) => {
     title:"Back",
     payload:"/main.inventory.pendingpurchases"
   }];
-  return buildResponse({buttons:BACK_BUTTON, chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".pendingpurchases";
+
+  return buildResponse({buttons:BACK_BUTTON, chartCards: cardWithGraph }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.pendingvendorpayments = async (data, token) => {
@@ -98,7 +116,11 @@ module.exports.pendingvendorpayments = async (data, token) => {
     title:"Back",
     payload:"/main.inventory.pendingvendorpayments"
   }];
-  return buildResponse({buttons:BACK_BUTTON, chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".pendingvendorpayments";
+  return buildResponse({buttons:BACK_BUTTON, chartCards: cardWithGraph }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.pendingindents = async (data, token) => {
@@ -158,7 +180,11 @@ module.exports.pendingindents = async (data, token) => {
     title:"Back",
     payload:"/main.inventory.pendingindents"
   }];
-  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".pendingindents";
+  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 module.exports.pendingphysicalchecks = async (data, token) => {
   const URL = BASE_URL + "/api/v1/inventory/pending-physical-checks";
@@ -194,7 +220,11 @@ module.exports.pendingphysicalchecks = async (data, token) => {
     title:"Back",
     payload:"/main.inventory.pendingphysicalchecks"
   }];
-  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".pendingphysicalchecks";
+  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.pendingproductions = async (data, token) => {
@@ -231,7 +261,11 @@ module.exports.pendingproductions = async (data, token) => {
     title:"Back",
     payload:"/main.inventory.pendingproductions"
   }];
-  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".pendingproductions";
+  return buildResponse({ buttons:BACK_BUTTON, chartCards: cardWithGraph }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.wastages = async (data, token) => {
@@ -297,7 +331,11 @@ module.exports.wastages = async (data, token) => {
     title:"Back",
     payload:"/main.inventory.wastages"
   }];
-  return buildResponse({ buttons:BACK_BUTTON, cards: cards });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".wastages";
+  return buildResponse({ buttons:BACK_BUTTON, cards: cards }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.costgoods = async (data, token) => {
@@ -357,7 +395,11 @@ module.exports.costgoods = async (data, token) => {
     title:"Back",
     payload:"/main.inventory.costgoods"
   }];
-  return buildResponse({ buttons:BACK_BUTTON, cards: cards });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".costgoods";
+  return buildResponse({ buttons:BACK_BUTTON, cards: cards }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.foodcost = async (data, token) => {
@@ -433,8 +475,11 @@ module.exports.foodcost = async (data, token) => {
     cards.push(obj);
     id++;
   });
-
-  return buildResponse({ cards: cards });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".foodcost";
+  return buildResponse({ cards: cards }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.marginitems = async (data, token) => {
@@ -497,8 +542,11 @@ module.exports.marginitems = async (data, token) => {
     cards.push(obj);
     id++;
   });
-
-  return buildResponse({ cards: cards });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".marginitems";
+  return buildResponse({ cards: cards }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };
 
 module.exports.lossitems = async (data, token) => {
@@ -561,6 +609,9 @@ module.exports.lossitems = async (data, token) => {
     cards.push(obj);
     id++;
   });
-
-  return buildResponse({ cards: cards });
+  let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload+".lossitems";
+  return buildResponse({ cards: cards }).concat(buildResponse({
+    quickReplies: quickReplies1
+  }));
 };

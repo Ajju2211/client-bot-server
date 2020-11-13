@@ -4,10 +4,18 @@ const { buildResponse } = require("../../utils/make-response");
 const { renameKeys,generateBackgroundColors } = require("../../utils");
 const quickReplies = [
     {
-        title:"Back",
-        payload:"/main.sales"
-    }
-];
+      title: "Back",
+      payload: "/main.sales",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.sales",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
 module.exports.consolidated = async (data, token) => {
     const URL = BASE_URL + "/api/v1/sales/consolidated";
     const resp = await axios.post(URL, data, {
@@ -42,9 +50,10 @@ module.exports.consolidated = async (data, token) => {
     ]
     cards.push(obj);
     });
-
+    let quickReplies1 = quickReplies;
+    quickReplies1[0].payload = quickReplies1[0].payload + ".consolidated";
     return buildResponse({ text: textMessage, cards: cards }).concat(buildResponse({
-        quickReplies:quickReplies
+        quickReplies:quickReplies1
     }));
 };
 
@@ -90,9 +99,10 @@ module.exports.topitems = async (data, token) => {
             displayLegend:DIPLAYLEGEND
         });
     });
-
+    let quickReplies1 = quickReplies;
+    quickReplies1[0].payload = quickReplies1[0].payload + ".topitems";
     return buildResponse({ text: textMessage, chartCards: cardWithGraph }).concat(buildResponse({
-        quickReplies:quickReplies
+        quickReplies:quickReplies1
     }));
 };
 
@@ -138,9 +148,10 @@ module.exports.topcategories = async (data, token) => {
             displayLegend:DIPLAYLEGEND
         });
     });
-
+    let quickReplies1 = quickReplies;
+    quickReplies1[0].payload = quickReplies1[0].payload + ".topcategories";
     return buildResponse({ text: textMessage, chartCards: cardWithGraph }).concat(buildResponse({
-        quickReplies:quickReplies
+        quickReplies:quickReplies1
     }));
 };
 
@@ -186,7 +197,9 @@ module.exports.topordertypes = async (data, token) => {
             displayLegend:DIPLAYLEGEND
         });
     });
+    let quickReplies1 = quickReplies;
+  quickReplies1[0].payload = quickReplies1[0].payload + ".topordertypes";
     return buildResponse({ text: textMessage, chartCards: cardWithGraph }).concat(buildResponse({
-        quickReplies:quickReplies
+        quickReplies:quickReplies1
     }));
 };

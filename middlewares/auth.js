@@ -5,7 +5,7 @@ const axios = require("axios");
 const db = [
   {
     email: "test@mail.com",
-    password: "test",
+    password: "mbot@2020",
     brand_id: "34",
     manager_id: "2",
   },
