@@ -47,6 +47,12 @@ module.exports = {
           payload: "/main.sales.topordertypes",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/greetings.welcome",
+        },
+      ],
     }),
   "main.sales.consolidated": () =>
     buildResponse({
@@ -67,6 +73,12 @@ module.exports = {
         {
           title: "LastMonth",
           payload: "/main.sales.consolidated.lastmonth",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.sales",
         },
       ],
     }),
@@ -91,6 +103,12 @@ module.exports = {
           payload: "/main.sales.topitems.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.sales",
+        },
+      ],
     }),
   "main.sales.topcategories": () =>
     buildResponse({
@@ -111,6 +129,12 @@ module.exports = {
         {
           title: "LastMonth",
           payload: "/main.sales.topcategories.lastmonth",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.sales",
         },
       ],
     }),
@@ -135,6 +159,12 @@ module.exports = {
           payload: "/main.sales.topordertypes.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.sales",
+        },
+      ],
     }),
   "main.sales.toppaymentmode": () =>
     buildResponse({
@@ -157,6 +187,12 @@ module.exports = {
           payload: "/main.sales.toppaymentmode.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.sales",
+        },
+      ],
     }),
   "main.payroll": () =>
     buildResponse({
@@ -173,6 +209,12 @@ module.exports = {
         {
           title: "Average Working hours",
           payload: "/main.payroll.avg_working_hrs",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/greetings.welcome",
         },
       ],
     }),
@@ -197,6 +239,12 @@ module.exports = {
           payload: "/main.payroll.absentees.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.payroll",
+        },
+      ],
     }),
   "main.payroll.avg_working_hrs": () =>
     buildResponse({
@@ -219,6 +267,12 @@ module.exports = {
           payload: "/main.payroll.avg_working_hrs.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.payroll",
+        },
+      ],
     }),
   "main.payroll.avg_costing": () =>
     buildResponse({
@@ -231,6 +285,12 @@ module.exports = {
         {
           title: "Monthly",
           payload: "/main.payroll.avg_costing.lastmonth",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.payroll",
         },
       ],
     }),
@@ -263,6 +323,12 @@ module.exports = {
           payload: "/main.recon.pendingpayouts",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/greetings.welcome",
+        },
+      ],
     }),
   "main.recon.variance": () =>
     buildResponse({
@@ -279,6 +345,12 @@ module.exports = {
         {
           title: "Last Month",
           payload: "/main.recon.variance.lastmonth",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.recon",
         },
       ],
     }),
@@ -303,6 +375,12 @@ module.exports = {
           payload: "/main.recon.cancellations.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.recon",
+        },
+      ],
     }),
   "main.recon.cdreport": () =>
     buildResponse({
@@ -323,6 +401,12 @@ module.exports = {
         {
           title: "Last Month",
           payload: "/main.recon.cdreport.lastmonth",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.recon",
         },
       ],
     }),
@@ -347,6 +431,12 @@ module.exports = {
           payload: "/main.recon.edcreport.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.recon",
+        },
+      ],
     }),
   "main.recon.expensetab": () =>
     buildResponse({
@@ -369,6 +459,12 @@ module.exports = {
           payload: "/main.recon.expensetab.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.recon",
+        },
+      ],
     }),
   "main.recon.pendingpayouts": () =>
     buildResponse({
@@ -389,6 +485,12 @@ module.exports = {
         {
           title: "Last Month",
           payload: "/main.recon.pendingpayouts.lastmonth",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.recon",
         },
       ],
     }),
@@ -437,8 +539,14 @@ module.exports = {
           payload: "/main.inventory.lossitems",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/greetings.welcome",
+        },
+      ],
     }),
-    "main.inventory.pendingpurchases": () =>
+  "main.inventory.pendingpurchases": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -459,8 +567,14 @@ module.exports = {
           payload: "/main.inventory.pendingpurchases.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.pendingvendorpayments": () =>
+  "main.inventory.pendingvendorpayments": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -481,8 +595,14 @@ module.exports = {
           payload: "/main.inventory.pendingvendorpayments.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.pendingindents": () =>
+  "main.inventory.pendingindents": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -503,8 +623,14 @@ module.exports = {
           payload: "/main.inventory.pendingindents.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.pendingphysicalchecks": () =>
+  "main.inventory.pendingphysicalchecks": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -525,8 +651,14 @@ module.exports = {
           payload: "/main.inventory.pendingphysicalchecks.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.pendingproductions": () =>
+  "main.inventory.pendingproductions": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -547,8 +679,14 @@ module.exports = {
           payload: "/main.inventory.pendingproductions.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.wastages": () =>
+  "main.inventory.wastages": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -569,8 +707,14 @@ module.exports = {
           payload: "/main.inventory.wastages.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.costgoods": () =>
+  "main.inventory.costgoods": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -591,8 +735,14 @@ module.exports = {
           payload: "/main.inventory.costgoods.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.foodcost": () =>
+  "main.inventory.foodcost": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -613,8 +763,14 @@ module.exports = {
           payload: "/main.inventory.foodcost.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.marginitems": () =>
+  "main.inventory.marginitems": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -635,8 +791,14 @@ module.exports = {
           payload: "/main.inventory.marginitems.lastmonth",
         },
       ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
+        },
+      ],
     }),
-    "main.inventory.lossitems": () =>
+  "main.inventory.lossitems": () =>
     buildResponse({
       text: "Please select on which dates you want to see.",
       buttons: [
@@ -655,6 +817,12 @@ module.exports = {
         {
           title: "Last Month",
           payload: "/main.inventory.lossitems.lastmonth",
+        },
+      ],
+      quickReplies: [
+        {
+          title: "Back",
+          payload: "/main.inventory",
         },
       ],
     }),

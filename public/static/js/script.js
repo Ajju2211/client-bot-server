@@ -466,7 +466,8 @@ function setBotResponse(response) {
                     //check if the custom payload type is "quickReplies"
                     if (response[i].custom.payload == "quickReplies") {
                         quickRepliesData = response[i].custom.data;
-                        showQuickReplies(quickRepliesData);
+                        setTimeout(showQuickReplies(quickRepliesData),2000);
+                        // showQuickReplies(quickRepliesData);
                         return;
                     }
 
@@ -502,8 +503,12 @@ function setBotResponse(response) {
                     //check if the custom payload type is "cardsCarousel"
                     if (response[i].custom.payload == "simpleCardsCarousel") {
                         let resData = (response[i].custom.data)
-                        showSimpleCardsCarousel(resData);
-                        return;
+                        setTimeout(()=>{
+                            showSimpleCardsCarousel(resData);
+                        },1000);
+                        // showSimpleCardsCarousel(resData);
+                        continue;
+                        // return;
                     }
 
                     //check if the custom payload type is "cardsCarousel"
@@ -511,8 +516,12 @@ function setBotResponse(response) {
                         let resData = (response[i].custom.outlets)
                         // first make global data empty
                         card_chart_data = [];
-                        showGraphCardsCarousel(resData);
-                        return;
+                        setTimeout(()=>{
+                            showGraphCardsCarousel(resData);
+                        },1000);
+                        // showGraphCardsCarousel(resData);
+                        continue;
+                        // return;
                     }
 
                     //check if the custom payload type is "chart"
@@ -1094,41 +1103,44 @@ function createGraphCardsCarousel(cardsData) {
 //====================================== Quick Replies ==================================================
 
 function showQuickReplies(quickRepliesData) {
-    var chips = ""
-    for (i = 0; i < quickRepliesData.length; i++) {
-        var chip = '<div class="chip" data-payload=\'' + (quickRepliesData[i].payload) + '\'>' + quickRepliesData[i].title + '</div>'
-        chips += (chip)
-    }
-
-    var quickReplies = '<div class="quickReplies">' + chips + '</div><div class="clearfix"></div>'
-    $(quickReplies).appendTo(".chats").fadeIn(1000);
-    scrollToBottomOfResults();
-    const slider = document.querySelector('.quickReplies');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        slider.classList.add('active');
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.classList.remove('active');
-    });
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.classList.remove('active');
-    });
-    slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 3; //scroll-fast
-        slider.scrollLeft = scrollLeft - walk;
-    });
+    setTimeout(function(){
+        var chips = ""
+        for (i = 0; i < quickRepliesData.length; i++) {
+            var chip = '<div class="chip" data-payload=\'' + (quickRepliesData[i].payload) + '\'>' + quickRepliesData[i].title + '</div>'
+            chips += (chip)
+        }
+    
+        var quickReplies = '<div class="quickReplies">' + chips + '</div><div class="clearfix"></div>'
+        $(quickReplies).appendTo(".chats").fadeIn(1000);
+        scrollToBottomOfResults();
+        const slider = document.querySelector('.quickReplies');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+    
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    }, 1000);
+    
 
 }
 

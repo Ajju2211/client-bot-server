@@ -2,6 +2,12 @@ const axios = require("axios");
 const BASE_URL = "http://client-bot-server.herokuapp.com";
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys,generateBackgroundColors } = require("../../utils");
+const quickReplies = [
+    {
+        title:"Back",
+        payload:"/main.sales"
+    }
+];
 module.exports.consolidated = async (data, token) => {
     const URL = BASE_URL + "/api/v1/sales/consolidated";
     const resp = await axios.post(URL, data, {
@@ -37,7 +43,9 @@ module.exports.consolidated = async (data, token) => {
     cards.push(obj);
     });
 
-    return buildResponse({ text: textMessage, cards: cards });
+    return buildResponse({ text: textMessage, cards: cards }).concat(buildResponse({
+        quickReplies:quickReplies
+    }));
 };
 
 module.exports.topitems = async (data, token) => {
@@ -83,7 +91,9 @@ module.exports.topitems = async (data, token) => {
         });
     });
 
-    return buildResponse({ text: textMessage, chartCards: cardWithGraph });
+    return buildResponse({ text: textMessage, chartCards: cardWithGraph }).concat(buildResponse({
+        quickReplies:quickReplies
+    }));
 };
 
 module.exports.topcategories = async (data, token) => {
@@ -129,7 +139,9 @@ module.exports.topcategories = async (data, token) => {
         });
     });
 
-    return buildResponse({ text: textMessage, chartCards: cardWithGraph });
+    return buildResponse({ text: textMessage, chartCards: cardWithGraph }).concat(buildResponse({
+        quickReplies:quickReplies
+    }));
 };
 
 module.exports.topordertypes = async (data, token) => {
@@ -174,6 +186,7 @@ module.exports.topordertypes = async (data, token) => {
             displayLegend:DIPLAYLEGEND
         });
     });
-
-    return buildResponse({ text: textMessage, chartCards: cardWithGraph });
+    return buildResponse({ text: textMessage, chartCards: cardWithGraph }).concat(buildResponse({
+        quickReplies:quickReplies
+    }));
 };

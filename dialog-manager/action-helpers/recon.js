@@ -18,7 +18,7 @@ module.exports.variance = async (data, token) => {
     obj.title = outlet.outlet_name;
     obj.metadata = {};
     obj.metadata.title = outlet.outlet_name;
-    // Adding 2 vales bcoz ui doesn't have single value
+    // Adding atleast 2 vales bcoz ui doesn't have single value
     obj.metadata.data = [
       {
         title: "Amount",
