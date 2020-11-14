@@ -49,7 +49,7 @@ Typing feature requires NLP intent classification ,previously I have implemented
 <ol>
 <li>
 <h4 style="color:orange">User Clicks Button</h4>
-<p>Whenever user clicks a button the data-payload as "/<intentname>" will be sent to server,<br>
+<p>Whenever user clicks a button the data-payload as "/intentname" will be sent to server,<br>
 <strong>eg: /main.sales.consolidated.today</strong> here this intent speaks about itself that under the main go to consolidated sales of today.
 </p>
 </li>
