@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // server statuc file
-app.use("/ui", express.static(path.join(__dirname, "public")));
+app.use("/", express.static(path.join(__dirname, "public")));
 
 // sample-api for testing replaced with original
 app.use("/api/v1", sampleAPIRouter);
