@@ -162,7 +162,12 @@ textarea-webkit-scrollbar {
 .imgProfile {
     box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.16), 0 0px 10px 0 #00000096;
     border-radius: 50px;
-    width: 60%;
+    width: 90%;
+}
+@media(min-width: 950px){
+	.imgProfile{
+		width: 60%;
+	}
 }
 
 .profile_div {
@@ -1379,6 +1384,7 @@ box-shadow: 0px 0px 12px 1px rgba(255,173,55,0.44);
         grid-template-columns: 30% 70%;
     }
 }
+
 /* media queries
 */
 @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
