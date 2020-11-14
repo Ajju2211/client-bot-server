@@ -180,7 +180,6 @@ const db = [
   },
 ];
 
-
 // sales API
 exports.consolidatedSales = async (req, res) => {
   try {

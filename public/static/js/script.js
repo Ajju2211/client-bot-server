@@ -1,3 +1,9 @@
+// overriding console.log in production
+// Debugging allowed only in localhost
+if(window.location.hostname != "localhost") {
+    console.log = function(){};
+}
+
 //Bot pop-up intro
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -348,7 +354,7 @@ function scrollToBottomOfResults() {
     terminalResultsDiv.scrollTop = terminalResultsDiv.scrollHeight;
 }
 
-//============== send the user message to rasa server =============================================
+//============== send the user message to Chatbot server =============================================
 function send(message) {
     // Destroy modal and charts and cards if opened
     // Destroy others
@@ -368,7 +374,7 @@ function send(message) {
         },
         data: JSON.stringify({ message: message, sender: user_id }),
         success: function (botResponse, status) {
-            console.log("Response from Rasa: ", botResponse, "\nStatus: ", status);
+            console.log("Response from Chatbot: ", botResponse, "\nStatus: ", status);
 
             // if user wants to restart the chat and clear the existing chat contents
             if (message.toLowerCase() == '/restart') {
@@ -393,7 +399,7 @@ function send(message) {
                 // return;
             }
 
-            // if there is no response from rasa server
+            // if there is no response from Chatbot server
             setBotResponse("");
             console.log("Error from bot end: ", textStatus);
         }
@@ -407,7 +413,7 @@ function setBotResponse(response) {
     setTimeout(function () {
         hideBotTyping();
         if (response.length < 1) {
-            //if there is no response from Rasa, send  fallback message to the user
+            //if there is no response from Chatbot, send  fallback message to the user
             var fallbackMsg = "I am facing some issues, please try again later!!!";
 
             var BotResponse = '<img class="botAvatar" src="./static/img/sara_avatar.png"/><p class="botMsg">' + fallbackMsg + '</p><div class="clearfix"></div>';
@@ -416,7 +422,7 @@ function setBotResponse(response) {
             scrollToBottomOfResults();
         } else {
 
-            //if we get response from Rasa
+            //if we get response from Chatbot
             for (i = 0; i < response.length; i++) {
 
                 //check if the response contains "text"
@@ -627,7 +633,7 @@ function addSuggestion(textToAdd) {
     }, 1000);
 }
 
-// on click of suggestions, get the value and send to rasa
+// on click of suggestions, get the value and send to Chatbot
 $(document).on("click", ".menu .menuChips", function () {
     var text = this.innerText;
     var payload = this.getAttribute('data-payload');
@@ -666,13 +672,10 @@ $("#logout").click(function () {
         },
         error: function (xhr, textStatus, errorThrown) {
             // display error in ui
-            // if there is no response from rasa server
+            // if there is no response from Chatbot server
             console.log("Error from bot end: ", textStatus);
         }
     });
-    // $(".profile_div").toggle();
-    // $(".widget").toggle();
-    // scrollToBottomOfResults();
 });
 
 //====================================== Cards Carousel =========================================
@@ -1127,7 +1130,7 @@ function showQuickReplies(quickRepliesData) {
 
 }
 
-// on click of quickreplies, get the value and send to rasa
+// on click of quickreplies, get the value and send to Chatbot
 $(document).on("click", ".quickReplies .chip", function () {
     var text = this.innerText;
     var payload = this.getAttribute('data-payload');
@@ -1583,7 +1586,7 @@ function login() {
         },
         error: function (xhr, textStatus, errorThrown) {
             // display error in ui
-            // if there is no response from rasa server
+            // if there is no response from Chatbot server
             $('#login-error').html("Invalid email or password");
             $('.warning-message').show();
             $('#login').prop('disabled', false);
@@ -1601,17 +1604,17 @@ function loginForm() {
         <div class="container mainform">
         <div class="row">
             <div class="col m12 center-align m2">
-                <p  style="font-size:1.3em;font-family:Georgia,serif">Hi 👋! Please fill out the form below to start chatting with the next available agent.</p>
+                <p  style="font-size:1.3em;font-family:Georgia,serif">Hi 👋! Please fill out the login form below to start chatting with the MBOT.</p>
             </div>
         </div>
         <div class="row ">
             <div class="warning-message"  style="display:none"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><span id="login-error" style="padding-left:13%"></span>
             </div>
             <div class="col m12 input-field sform">
-                    <input  type="email" class="" style="border:none;border-bottom:none;outline:none"  name="email" placeholder="Email">
+                    <input  type="email" class="validate" style="border:none;border-bottom:none;outline:none"  name="email" placeholder="Email">
             </div>
             <div class="input-field col m12 sform">
-                    <input type="password" class="" style="border:none;border-bottom:none;outline:none" name="password" placeholder="Password">
+                    <input type="password" class="validate" style="border:none;border-bottom:none;outline:none" name="password" placeholder="Password">
             </div>
         </div>
         <div class="row">

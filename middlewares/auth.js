@@ -50,39 +50,45 @@ exports.login = async (req, res) => {
     email_id: email,
     password: password,
   };
-  const resp = await axios.post(URL, reqBody, {
-    headers: {
-      "Content-Type": "application/json",
-      // If any authorization header token  for login API
-      // authorization: `Bearer ${token}`,
-    },
-  });
+  try {
+    const resp = await axios.post(URL, reqBody, {
+      headers: {
+        "Content-Type": "application/json",
+        // If any authorization header token  for login API
+        // authorization: `Bearer ${token}`,
+      },
+    });
+    const user = resp.data;
 
-  const user = resp.data;
+    if (!user) {
+      // If Incorrect Sending response
+      return res.status(400).json({
+        status: "failed",
+        data: "Invalid email and password",
+      });
+    }
 
-  if (!user) {
-    // If Incorrect Sending response
+    // Signed Token
+    const token = signToken(user.result.email);
+
+    // 3)Sending Userdata and Token , maxAge is 7 days,
+    res.cookie("jwt", token, {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
+    res.status(200).json({
+      status: "success",
+      token,
+      data: user.result,
+    });
+  } catch (error) {
     return res.status(400).json({
       status: "failed",
       data: "Invalid email and password",
     });
   }
-
-  // Signed Token
-  const token = signToken(user.result.email);
-
-  // 3)Sending Userdata and Token , maxAge is 7 days,
-  res.cookie("jwt", token, {
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-    httpOnly: true,
-    sameSite: "none",
-    secure: true,
-  });
-  res.status(200).json({
-    status: "success",
-    token,
-    data: user.result,
-  });
 };
 
 exports.protect = async (req, res, next) => {

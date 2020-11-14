@@ -1,20 +1,18 @@
 module.exports.requireAll = (dirPath) => {
-  const modules = require('require-dir-all')("../"+dirPath);
+  const modules = require("require-dir-all")("../" + dirPath);
   let targetModule = {};
   let keys = Object.keys(modules);
-  for(let i=0;i<keys.length;i++){
-      Object.assign(targetModule, modules[keys[i]]);
+  for (let i = 0; i < keys.length; i++) {
+    Object.assign(targetModule, modules[keys[i]]);
   }
   return targetModule;
 };
 
-
-
 module.exports.renameKeys = (keysMap, obj) => {
-    /**
-     * Takes oldkeys,newkeys keyvalue pairs as keysMap,obj
-     * to be changed
-     */
+  /**
+   * Takes oldkeys,newkeys keyvalue pairs as keysMap,obj
+   * to be changed
+   */
   return Object.keys(obj).reduce(
     (acc, key) => ({
       ...acc,
@@ -39,22 +37,22 @@ keysMap = {
 
 module.exports.generateBackgroundColors = (numOfColors) => {
   const COLORS = [
-  "#f44336",
-  "#2196f3",
-  "#e91e63",
-  "#ffeb3b",
-  "#fb8c00",
-  "#64dd17",
-  "#757575",
-  "#18ffff",
-  "#9e9d24",
-  "#ab47bc ",
+    "#f44336",
+    "#2196f3",
+    "#e91e63",
+    "#ffeb3b",
+    "#fb8c00",
+    "#64dd17",
+    "#757575",
+    "#18ffff",
+    "#9e9d24",
+    "#ab47bc ",
   ];
   let result = [];
-  let i=0;
-  while(result.length!= numOfColors){
-    if(i>COLORS.length-1){
-      i =0;
+  let i = 0;
+  while (result.length != numOfColors) {
+    if (i > COLORS.length - 1) {
+      i = 0;
     }
     result.push(COLORS[i]);
     i++;

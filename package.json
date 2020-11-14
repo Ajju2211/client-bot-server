@@ -24,7 +24,6 @@
     "md5": "^2.3.0",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
-    "node-nlp": "^4.14.2",
     "require-dir-all": "^0.4.15"
   },
   "devDependencies": {

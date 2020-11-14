@@ -1,10 +1,9 @@
-const express = require('express');
-const morgan = require('morgan');
-const helmet = require('helmet');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
+const express = require("express");
+const morgan = require("morgan");
+const helmet = require("helmet");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const path = require("path");
-
 
 // Routes
 const userRouter = require("./routes/user");
@@ -16,7 +15,7 @@ const app = express();
 //Middleware
 //Implement cors
 app.use(cors());
-app.options('*', cors());
+app.options("*", cors());
 
 //set security HTTPS headers
 // app.use(helmet());
@@ -28,19 +27,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // server statuc file
-app.use('/ui', express.static(path.join(__dirname, 'public')))
+app.use("/ui", express.static(path.join(__dirname, "public")));
 
 // sample-api for testing replaced with original
-app.use('/api/v1', sampleAPIRouter);
+app.use("/api/v1", sampleAPIRouter);
 
-app.use('/user', userRouter);
+app.use("/user", userRouter);
 
 //Handling unexpected routes
-app.all('*', (req, res, next) => {
-	res.status(404).json({
-		status: 'fail',
-		message: `Can't find ${req.originalUrl} on this server`
-	});
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Can't find ${req.originalUrl} on this server`,
+  });
 });
 
 module.exports = app;
