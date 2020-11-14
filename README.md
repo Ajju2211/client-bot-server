@@ -7,6 +7,7 @@
 1. [Installation](#installation)
 2. [Run server](#run-server)
 3. [How it works?](#how-it-works)
+4. [Payloads](#payloads)
 
 ## Installation
 
@@ -69,4 +70,8 @@ Where as the responses are the static responses.
 </li>
 </ol>
 </p>
+
+
+## Payloads
+
 
