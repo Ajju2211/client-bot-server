@@ -1,21 +1,8 @@
 const axios = require("axios");
-const BASE_URL = "http://client-bot-server.herokuapp.com";
+const BASE_URL = process.env.API_BASE_URL;
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys, generateBackgroundColors } = require("../../utils");
-const quickReplies = [
-  {
-    title: "Back",
-    payload: "/main.recon",
-  },
-  {
-    title: "Sub Menu",
-    payload: "/main.recon",
-  },
-  {
-    title: "Main Menu",
-    payload: "/greetings.welcome",
-  },
-];
+
 module.exports.variance = async (data, token) => {
   const URL = BASE_URL + "/api/v1/reconciliation/variance";
   const resp = await axios.post(URL, data, {
@@ -45,8 +32,20 @@ module.exports.variance = async (data, token) => {
     ];
     cards.push(obj);
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload + ".variance";
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.recon.variance",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.recon",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
   return buildResponse({ cards: cards }).concat(
     buildResponse({
       quickReplies: quickReplies1,
@@ -84,8 +83,20 @@ module.exports.cancellations = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload + ".cancellations";
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.recon.cancellations",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.recon",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
   return buildResponse({ chartCards: cardWithGraph }).concat(
     buildResponse({
       quickReplies: quickReplies1,
@@ -128,8 +139,20 @@ module.exports.cdreport = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload + ".cdreport";
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.recon.cdreport",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.recon",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
   return buildResponse({ chartCards: cardWithGraph }).concat(
     buildResponse({
       quickReplies: quickReplies1,
@@ -157,7 +180,7 @@ module.exports.edcreport = async (data, token) => {
     let chartIntersectData = [];
     outlet.details.forEach((detail) => {
       labels.push(detail.aggregator);
-      chartData.push(detail.sales);
+      chartData.push(detail.recon);
       chartIntersectData.push(detail.amount_credited);
     });
     cardWithGraph.push({
@@ -172,8 +195,20 @@ module.exports.edcreport = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload + ".edcreport";
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.recon.edcreport",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.recon",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
   return buildResponse({ chartCards: cardWithGraph }).concat(
     buildResponse({
       quickReplies: quickReplies1,
@@ -201,12 +236,12 @@ module.exports.expensetab = async (data, token) => {
     let chartIntersectData = [];
     outlet.details.forEach((detail) => {
       labels.push(detail.aggregator);
-      chartData.push(detail.sales);
+      chartData.push(detail.recon);
       chartIntersectData.push(detail.amount_credited);
     });
     cardWithGraph.push({
       title: outlet.outlet_name,
-      label1: "Sales",
+      label1: "recon",
       label2: "AmtCredited",
       labels: labels,
       chartsData: chartData,
@@ -216,8 +251,20 @@ module.exports.expensetab = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload + ".expensetab";
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.recon.expensetab",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.recon",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
   return buildResponse({ chartCards: cardWithGraph }).concat(
     buildResponse({
       quickReplies: quickReplies1,
@@ -260,8 +307,20 @@ module.exports.pendingpayouts = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload + ".pendingpayouts";
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.recon.pendingpayouts",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.recon",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
   return buildResponse({ chartCards: cardWithGraph }).concat(
     buildResponse({
       quickReplies: quickReplies1,

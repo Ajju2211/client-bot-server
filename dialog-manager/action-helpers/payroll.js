@@ -1,21 +1,8 @@
 const axios = require("axios");
-const BASE_URL = "http://client-bot-server.herokuapp.com";
+const BASE_URL = process.env.API_BASE_URL;
 const { buildResponse } = require("../../utils/make-response");
 const { renameKeys, generateBackgroundColors } = require("../../utils");
-const quickReplies = [
-  {
-      title:"Back",
-      payload:"/main.payroll"
-  },
-  {
-    title:"Sub Menu",
-    payload:"/main.payroll"
-},
-{
-  title:"Main Menu",
-  payload:"/greetings.welcome"
-},
-];
+
 module.exports.absentees = async (data, token) => {
   const URL = BASE_URL + "/api/v1/payroll/absentees";
   const resp = await axios.post(URL, data, {
@@ -32,7 +19,7 @@ module.exports.absentees = async (data, token) => {
     d = "Last Week";
     textMessage = `${d}'s Absentees from ${data.from} - ${data.to}`;
   }
-  // textMessage += `\n Total Bills - ${result.totaldata.bill_count} \n Total Sales - ${result.totaldata.totalsale}`;
+  // textMessage += `\n Total Bills - ${result.totaldata.bill_count} \n Total payroll - ${result.totaldata.totalsale}`;
   let id = 0;
   result.forEach((outlet) => {
     let obj = {};
@@ -66,14 +53,26 @@ module.exports.absentees = async (data, token) => {
     cards.push(obj);
     id++;
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload+".absentees";
-  return buildResponse({ cards: cards }).concat(buildResponse({
-    quickReplies: quickReplies1
-  }));
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.payroll.absentees",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.payroll",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
+  return buildResponse({ cards: cards }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };
-
-
 
 module.exports.avg_working_hrs = async (data, token) => {
   const URL = BASE_URL + "/api/v1/payroll/avg-working-hours";
@@ -109,7 +108,7 @@ module.exports.avg_working_hrs = async (data, token) => {
           },
         ],
       },
-      label1:"AvgWorkingHrs",
+      label1: "AvgWorkingHrs",
       title: outlet.outlet_name,
       labels: labels,
       chartsData: chartData,
@@ -118,59 +117,87 @@ module.exports.avg_working_hrs = async (data, token) => {
       displayLegend: DIPLAYLEGEND,
     });
   });
-  let quickReplies1 = quickReplies;
-  quickReplies1[0].payload = quickReplies1[0].payload+".avg_working_hrs";
-  return buildResponse({ chartCards: cardWithGraph }).concat(buildResponse({
-    quickReplies: quickReplies1
-  }));
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.payroll.avg_working_hrs",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.payroll",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
+  return buildResponse({ chartCards: cardWithGraph }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
 };
 
 module.exports.avg_costing = async (data, token) => {
-    const URL = BASE_URL + "/api/v1/payroll/avg-costing";
-    const resp = await axios.post(URL, data, {
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
+  const URL = BASE_URL + "/api/v1/payroll/avg-costing";
+  const resp = await axios.post(URL, data, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  let result = resp.data.result;
+  let cardWithGraph = [];
+  const CHARTTYPE = "bar";
+  const DIPLAYLEGEND = "true";
+  result.forEach((outlet) => {
+    let labels = [];
+    // Y-Axis
+    let chartData = [];
+    outlet.details.forEach((detail) => {
+      labels.push(detail.name);
+      chartData.push(detail.avg_costing);
     });
-    let result = resp.data.result;
-    let cardWithGraph = [];
-    const CHARTTYPE = "bar";
-    const DIPLAYLEGEND = "true";
-    result.forEach((outlet) => {
-      let labels = [];
-      // Y-Axis
-      let chartData = [];
-      outlet.details.forEach((detail) => {
-        labels.push(detail.name);
-        chartData.push(detail.avg_costing);
-      });
-      cardWithGraph.push({
-        metadata: {
-          title: outlet.outlet_name,
-          data: [
-            {
-              title: "Category",
-              value: outlet.category_name,
-            },
-            {
-              title: "Total",
-              value: outlet.total_costing,
-            },
-          ],
-        },
-        label1:"AvgCosting",
+    cardWithGraph.push({
+      metadata: {
         title: outlet.outlet_name,
-        labels: labels,
-        chartsData: chartData,
-        backgroundColor: generateBackgroundColors(chartData.length),
-        chartType: CHARTTYPE,
-        displayLegend: DIPLAYLEGEND,
-      });
+        data: [
+          {
+            title: "Category",
+            value: outlet.category_name,
+          },
+          {
+            title: "Total",
+            value: outlet.total_costing,
+          },
+        ],
+      },
+      label1: "AvgCosting",
+      title: outlet.outlet_name,
+      labels: labels,
+      chartsData: chartData,
+      backgroundColor: generateBackgroundColors(chartData.length),
+      chartType: CHARTTYPE,
+      displayLegend: DIPLAYLEGEND,
     });
-    let quickReplies1 = quickReplies;
-    quickReplies1[0].payload = quickReplies1[0].payload+".avg_costing";
-    return buildResponse({ chartCards: cardWithGraph }).concat(buildResponse({
-      quickReplies: quickReplies1
-    }));
-  };
+  });
+  let quickReplies1 = [
+    {
+      title: "Back",
+      payload: "/main.payroll.avg_costing",
+    },
+    {
+      title: "Sub Menu",
+      payload: "/main.payroll",
+    },
+    {
+      title: "Main Menu",
+      payload: "/greetings.welcome",
+    },
+  ];
+  return buildResponse({ chartCards: cardWithGraph }).concat(
+    buildResponse({
+      quickReplies: quickReplies1,
+    })
+  );
+};
