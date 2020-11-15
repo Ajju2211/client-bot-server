@@ -218,39 +218,39 @@ $(document).ready(function () {
     //         }]);
 
     // // GraphCardsCarousel
-    //     setBotResponse([
-    //         {
-    //             "text":"Displaying card with Graph",
-    //             "custom":{
-    //                 "payload":"graphCardsCarousel",
-    //                 "outlets":[
-    //                 {
-    //                 "metadata":{
-    //                     title:"Nandha Outlet",
-    //                     data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
-    //                     {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
-    //                     {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
-    //                 },
-    //                 "label1":"Label1.",
-    //                 "label2":"Label2.",
-    //                 "chartsIntersectData":[2, 4, 12, 9],
-    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-    //                 },
-    //                 {
-    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-    //                 },
-    //                 {
-    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-    //                 },
-    //                 {
-    //          "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
-    //                 } 
+        // setBotResponse([
+        //     {
+        //         "text":"Displaying card with Graph",
+        //         "custom":{
+        //             "payload":"graphCardsCarousel",
+        //             "outlets":[
+        //             {
+        //             "metadata":{
+        //                 title:"Nandha Outlet",
+        //                 data:[{title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"},
+        //                 {title:"val1111111111111111111",value:"bbbbbbbbbbbbbbbbbbbabab"},
+        //                 {title:"val1",value:"bbbbbbbbbbbbbbbbbbbabab"}]
+        //             },
+        //             "label1":"Label1.",
+        //             "label2":"Label2.",
+        //             "chartsIntersectData":[2, 4, 12, 9],
+        //      "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+        //             },
+        //             {
+        //      "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+        //             },
+        //             {
+        //      "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+        //             },
+        //             {
+        //      "title": "Nandha Outlet", "labels": ["Sick Leave", "Casual Leave", "Earned Leave", "Flexi Leave"], "backgroundColor": ["#36a2eb", "#ffcd56", "#ff6384", "#009688", "#c45850"], "chartsData": [5, 10, 22, 3], "chartType": "bar", "displayLegend": "true"              
+        //             } 
 
-    //                 ]
-    //             }
-    //         }
+        //             ]
+        //         }
+        //     }
 
-    //         ]);
+        //     ]);
     // setBotResponse([
     //     {
     //         "custom":{
