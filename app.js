@@ -12,6 +12,14 @@ const sampleAPIRouter = require("./sample-api/router");
 // const media_cache = require("./routes/media-cache");
 const app = express();
 
+// UN comment whenever required to see whois accesing logs
+// // log All STDOUT
+// const fs = require('fs');
+// let accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+ 
+// // setup the logger
+// app.use(morgan('combined', { stream: accessLogStream }))
+
 //Middleware
 //Implement cors
 app.use(cors());
