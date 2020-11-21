@@ -6,6 +6,13 @@ const db = [
     manager_id: "3",
     token: "eccbc87e4b5ce2fe28308fd9f2a7baf3c20ad4d76fe97759aa27a0c99bff6710",
   },
+  {
+    email_id: "linkedin@test.com",
+    password: "linkedin@2020",
+    brand_id: "12",
+    manager_id: "3",
+    token: "eccbc87e4b5ce2fe28308fd9f2a7baf3c20ad4d76fe97759aa27a0c99bff6710",
+  }
 ];
 
 module.exports.login = (req, res) => {
